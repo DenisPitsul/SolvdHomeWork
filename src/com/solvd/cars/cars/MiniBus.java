@@ -4,11 +4,8 @@ public class MiniBus extends Car {
     private boolean isPassenger;
     private boolean isThereBackWindows;
 
-    public MiniBus(String engine, String color, String number, int maxSpeed, int year,
-                   boolean isPassenger, boolean isThereBackWindows) {
-        super(engine, color, number, maxSpeed, year);
-        this.isPassenger = isPassenger;
-        this.isThereBackWindows = isThereBackWindows;
+    public MiniBus(String engine, int maxSpeed, int year) {
+        super(engine, maxSpeed, year);
     }
 
     public MiniBus() {
@@ -26,16 +23,16 @@ public class MiniBus extends Car {
         return isThereBackWindows;
     }
 
-    public void setThereBackWindows(boolean thereBackWindows) {
-        isThereBackWindows = thereBackWindows;
+    public void setThereBackWindows(boolean isThereBackWindows) {
+        this.isThereBackWindows = isThereBackWindows;
     }
 
     @Override
     public String toString() {
         return "MiniBus{" +
-                "engine='" + getEngine() +
-                ", color='" + getColor() +
-                ", number='" + getNumber() +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
                 ", isPassenger=" + isPassenger +

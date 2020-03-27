@@ -9,39 +9,45 @@ public class Executor {
 
     public static void main(String[] args) {
 
-        AudiA6 audiA6 = new AudiA6("black", "CE4567AA", 260,
-                2015, 19, "Alcantara");
+        AudiA6 audiA6 = new AudiA6(260, 2015);
+        audiA6.setColor("black");
+        audiA6.setNumber("CE4567AA");
+        audiA6.setWheelRadius(19);
+        audiA6.setSalon("Alcantara");
 
-        System.out.println("---------------------------");
-
-        audiA6.accelerate(30);
-        audiA6.showVelocity();
-        audiA6.accelerate(90);
-        audiA6.showVelocity();
-        audiA6.accelerate(160);
-        audiA6.showVelocity();
-        audiA6.decelerate(100);
-        audiA6.showVelocity();
-        audiA6.decelerate(200);
-        audiA6.showVelocity();
+        System.out.println(audiA6.accelerate(30));
+        System.out.println(audiA6.accelerate(90));
+        System.out.println(audiA6.accelerate(160));
+        System.out.println(audiA6.decelerate(100));
+        System.out.println(audiA6.decelerate(200));
         System.out.println(audiA6);
 
         System.out.println("---------------------------");
 
-        MercedesVito mercedesVito = new MercedesVito("white", "CE2901AA", 240,
-                2012, 7);
+        MercedesVito mercedesVito = new MercedesVito(240, 2012);
+        mercedesVito.setColor("white");
+        mercedesVito.setNumber("CE2901AA");
+        mercedesVito.setPassengerSeatsCount(7);
+
         System.out.println(mercedesVito);
 
         System.out.println("---------------------------");
 
-        ToyotaLandCruiser toyotaLandCruiser = new ToyotaLandCruiser("yelow", "CE6511AA", 240,
-                2014, 50);
+        ToyotaLandCruiser toyotaLandCruiser = new ToyotaLandCruiser(240, 2014);
+        toyotaLandCruiser.setColor("yelow");
+        toyotaLandCruiser.setNumber("CE6511AA");
+        toyotaLandCruiser.setClearanceLength(50);
+
         System.out.println(toyotaLandCruiser);
 
         System.out.println("---------------------------");
 
-        TeslaSemi teslaSemi = new TeslaSemi("grey", "CE4099AA", 200,
-                2017, 20, 800);
+        TeslaSemi teslaSemi = new TeslaSemi(200, 2017);
+        teslaSemi.setColor("grey");
+        teslaSemi.setNumber("CE4099AA");
+        teslaSemi.setLiftingCapacity(20);
+        teslaSemi.setBatteryPowerReserve(800);
+
         teslaSemi.honk();
         System.out.println(teslaSemi);
 

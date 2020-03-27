@@ -4,9 +4,8 @@ public class AudiA6 extends Sedan {
     private String salon;
     private boolean isThereBackViewCamera;
 
-    public AudiA6(String color, String number, int maxSpeed, int year, int wheelRadius, String salon) {
-        super("V6+Turbo", color, number, maxSpeed, year, wheelRadius);
-        this.salon = salon;
+    public AudiA6(int maxSpeed, int year) {
+        super("V6+Turbo", maxSpeed, year);
         this.isThereBackViewCamera = true;
     }
 
@@ -25,20 +24,20 @@ public class AudiA6 extends Sedan {
         return isThereBackViewCamera;
     }
 
-    public void setThereBackViewCamera(boolean thereBackViewCamera) {
-        isThereBackViewCamera = thereBackViewCamera;
+    public void setThereBackViewCamera(boolean isThereBackViewCamera) {
+        this.isThereBackViewCamera = isThereBackViewCamera;
     }
 
     @Override
     public String toString() {
         return "AudiA6{" +
-                "engine='" + getEngine() +
-                ", color='" + getColor() +
-                ", number='" + getNumber() +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
                 ", wheelRadius=" + getWheelRadius() +
-                ", salon='" + salon +
+                ", salon='" + salon + '\'' +
                 ", isThereBackViewCamera=" + isThereBackViewCamera +
                 '}';
     }

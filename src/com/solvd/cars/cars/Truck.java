@@ -3,9 +3,8 @@ package com.solvd.cars.cars;
 public class Truck extends Car {
     private int liftingCapacity; // tons
 
-    public Truck(String engine, String color, String number, int maxSpeed, int year, int liftingCapacity) {
-        super(engine, color, number, maxSpeed, year);
-        this.liftingCapacity = liftingCapacity;
+    public Truck(String engine, int maxSpeed, int year) {
+        super(engine, maxSpeed, year);
     }
 
     public Truck() {
@@ -22,9 +21,9 @@ public class Truck extends Car {
     @Override
     public String toString() {
         return "Truck{" +
-                "engine='" + getEngine() +
-                ", color='" + getColor() +
-                ", number='" + getNumber() +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
                 ", liftingCapacity=" + liftingCapacity +

@@ -3,10 +3,8 @@ package com.solvd.cars.cars;
 public class TeslaSemi extends Truck {
     private int batteryPowerReserve; // battery power in kilometers of autonomous driving
 
-    public TeslaSemi(String color, String number, int maxSpeed, int year,
-                     int liftingCapacity, int batteryPowerReserve) {
-        super("Eleсtro", color, number, maxSpeed, year, liftingCapacity);
-        this.batteryPowerReserve = batteryPowerReserve;
+    public TeslaSemi(int maxSpeed, int year) {
+        super("Eleсtro", maxSpeed, year);
     }
 
     public TeslaSemi() {
@@ -23,9 +21,9 @@ public class TeslaSemi extends Truck {
     @Override
     public String toString() {
         return "TeslaSemi{" +
-                "engine='" + getEngine() +
-                ", color='" + getColor() +
-                ", number='" + getNumber() +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
                 ", liftingCapacity=" + getLiftingCapacity() +

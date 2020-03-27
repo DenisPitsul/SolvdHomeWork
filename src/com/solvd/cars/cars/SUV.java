@@ -4,11 +4,8 @@ public class SUV extends Car {
     private boolean isThereTopTrunk;
     private int clearanceLength;
 
-    public SUV(String engine, String color, String number, int maxSpeed, int year,
-               boolean isThereTopTrunk, int clearanceLength) {
-        super(engine, color, number, maxSpeed, year);
-        this.isThereTopTrunk = isThereTopTrunk;
-        this.clearanceLength = clearanceLength;
+    public SUV(String engine, int maxSpeed, int year) {
+        super(engine, maxSpeed, year);
     }
 
     public SUV() {
@@ -18,8 +15,8 @@ public class SUV extends Car {
         return isThereTopTrunk;
     }
 
-    public void setThereTopTrunk(boolean thereTopTrunk) {
-        isThereTopTrunk = thereTopTrunk;
+    public void setThereTopTrunk(boolean isThereTopTrunk) {
+        this.isThereTopTrunk = isThereTopTrunk;
     }
 
     public int getClearanceLength() {
@@ -33,9 +30,9 @@ public class SUV extends Car {
     @Override
     public String toString() {
         return "SUV{" +
-                "engine='" + getEngine() +
-                ", color='" + getColor() +
-                ", number='" + getNumber() +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
                 ", isThereTopTrunk=" + isThereTopTrunk +

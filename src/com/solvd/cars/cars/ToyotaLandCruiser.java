@@ -3,10 +3,10 @@ package com.solvd.cars.cars;
 public class ToyotaLandCruiser extends SUV {
     private boolean isThereBackViewCamera;
 
-    public ToyotaLandCruiser(String color, String number, int maxSpeed, int year,
-                             int clearanceLength) {
-        super("V8 4.5", color, number, maxSpeed, year, true, clearanceLength+5);
+    public ToyotaLandCruiser(int maxSpeed, int year) {
+        super("V8 4.5", maxSpeed, year);
         this.isThereBackViewCamera = true;
+        setThereTopTrunk(true);
     }
 
     public ToyotaLandCruiser() {
@@ -16,16 +16,21 @@ public class ToyotaLandCruiser extends SUV {
         return isThereBackViewCamera;
     }
 
-    public void setThereBackViewCamera(boolean thereBackViewCamera) {
-        isThereBackViewCamera = thereBackViewCamera;
+    public void setThereBackViewCamera(boolean isThereBackViewCamera) {
+        this.isThereBackViewCamera = isThereBackViewCamera;
+    }
+
+    @Override
+    public void setClearanceLength(int clearanceLength) {
+        super.setClearanceLength(clearanceLength + 5);
     }
 
     @Override
     public String toString() {
         return "ToyotaLandCruiser{" +
-                "engine='" + getEngine() +
-                ", color='" + getColor() +
-                ", number='" + getNumber() +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
                 ", isThereTopTrunk=" + isThereTopTrunk() +

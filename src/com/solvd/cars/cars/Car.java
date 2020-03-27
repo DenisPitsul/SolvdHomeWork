@@ -8,10 +8,8 @@ public class Car extends Vehicle {
 
     private int velocity;
 
-    public Car(String engine, String color, String number, int maxSpeed, int year) {
+    public Car(String engine, int maxSpeed, int year) {
         super(engine);
-        this.color = color;
-        this.number = number;
         this.maxSpeed = maxSpeed;
         this.year = year;
     }
@@ -20,25 +18,25 @@ public class Car extends Vehicle {
     }
 
     public void honk() {
-        System.out.println("Beep beep!!");
+        System.out.println("Beep beep!");
     }
 
-    public void accelerate(double a) {
-        if ((velocity+a) <= maxSpeed) {
+    public int accelerate(double a) {
+        if ((velocity+a) <= maxSpeed)
             velocity += a;
-        }
-        else {
+        else
             velocity = maxSpeed;
-        }
+
+        return velocity;
     }
 
-    public void decelerate(double a) {
-        if ((velocity-a) >= 0) {
+    public int decelerate(double a) {
+        if ((velocity-a) >= 0)
             velocity -= a;
-        }
-        else {
+        else
             velocity = 0;
-        }
+
+        return velocity;
     }
 
     public void showVelocity() {
@@ -90,9 +88,9 @@ public class Car extends Vehicle {
     @Override
     public String toString() {
         return "Car{" +
-                "engine='" + getEngine() +
-                ", color='" + color +
-                ", number='" + number +
+                "engine='" + getEngine() + '\'' +
+                ", color='" + color + '\'' +
+                ", number='" + number + '\'' +
                 ", maxSpeed=" + maxSpeed +
                 ", year=" + year +
                 '}';
