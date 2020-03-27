@@ -1,9 +1,9 @@
-package com.solvd.cars;
+package com.solvd.homework.hw2;
 
-import com.solvd.cars.cars.AudiA6;
-import com.solvd.cars.cars.MercedesVito;
-import com.solvd.cars.cars.TeslaSemi;
-import com.solvd.cars.cars.ToyotaLandCruiser;
+import com.solvd.homework.hw2.model.AudiA6;
+import com.solvd.homework.hw2.model.MercedesVito;
+import com.solvd.homework.hw2.model.TeslaSemi;
+import com.solvd.homework.hw2.model.ToyotaLandCruiser;
 
 public class Executor {
 

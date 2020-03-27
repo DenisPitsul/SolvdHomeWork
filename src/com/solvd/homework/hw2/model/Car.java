@@ -1,4 +1,4 @@
-package com.solvd.cars.cars;
+package com.solvd.homework.hw2.model;
 
 public class Car extends Vehicle {
     private String color;

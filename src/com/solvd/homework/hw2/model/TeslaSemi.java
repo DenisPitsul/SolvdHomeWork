@@ -1,4 +1,4 @@
-package com.solvd.cars.cars;
+package com.solvd.homework.hw2.model;
 
 public class TeslaSemi extends Truck {
     private int batteryPowerReserve; // battery power in kilometers of autonomous driving
