@@ -9,6 +9,8 @@ public class Executor {
 
     public static void main(String[] args) {
 
+        System.out.println("--------------------------------------------------");
+
         AudiA6 audiA6 = new AudiA6(260, 2015);
         audiA6.setColor("black");
         audiA6.setNumber("CE4567AA");
@@ -20,27 +22,28 @@ public class Executor {
         System.out.println(audiA6.accelerate(160));
         System.out.println(audiA6.decelerate(100));
         System.out.println(audiA6.decelerate(200));
-        System.out.println(audiA6);
 
-        System.out.println("---------------------------");
+        audiA6.printInfo();
+
+        System.out.println("--------------------------------------------------");
 
         MercedesVito mercedesVito = new MercedesVito(240, 2012);
         mercedesVito.setColor("white");
         mercedesVito.setNumber("CE2901AA");
         mercedesVito.setPassengerSeatsCount(7);
 
-        System.out.println(mercedesVito);
+        mercedesVito.printInfo();
 
-        System.out.println("---------------------------");
+        System.out.println("--------------------------------------------------");
 
         ToyotaLandCruiser toyotaLandCruiser = new ToyotaLandCruiser(240, 2014);
         toyotaLandCruiser.setColor("yelow");
         toyotaLandCruiser.setNumber("CE6511AA");
         toyotaLandCruiser.setClearanceLength(50);
 
-        System.out.println(toyotaLandCruiser);
+        toyotaLandCruiser.printInfo();
 
-        System.out.println("---------------------------");
+        System.out.println("--------------------------------------------------");
 
         TeslaSemi teslaSemi = new TeslaSemi(200, 2017);
         teslaSemi.setColor("grey");
@@ -49,9 +52,12 @@ public class Executor {
         teslaSemi.setBatteryPowerReserve(800);
 
         teslaSemi.honk();
-        System.out.println(teslaSemi);
+        teslaSemi.printInfo();
 
-        System.out.println("---------------------------");
+        System.out.println("--------------------------------------------------");
 
     }
+
+
+
 }

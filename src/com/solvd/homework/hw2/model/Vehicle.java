@@ -1,6 +1,6 @@
 package com.solvd.homework.hw2.model;
 
-public class Vehicle {
+public abstract class Vehicle {
     private String engine;
 
     public Vehicle(String engine) {
@@ -18,10 +18,6 @@ public class Vehicle {
         this.engine = engine;
     }
 
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "engine='" + engine + '\'' +
-                '}';
-    }
+    public abstract void honk();
+
 }

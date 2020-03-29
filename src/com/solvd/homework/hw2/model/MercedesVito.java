@@ -1,6 +1,8 @@
 package com.solvd.homework.hw2.model;
 
-public class MercedesVito extends MiniBus {
+import com.solvd.homework.hw2.model.interfaces.ICarModel;
+
+public class MercedesVito extends MiniBus implements ICarModel {
     private int passengerSeatsCount;
 
     public MercedesVito(int maxSpeed, int year) {
@@ -23,7 +25,8 @@ public class MercedesVito extends MiniBus {
     @Override
     public String toString() {
         return "MercedesVito{" +
-                "engine='" + getEngine() + '\'' +
+                "model='" + carModel() + '\'' +
+                ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
@@ -32,5 +35,11 @@ public class MercedesVito extends MiniBus {
                 ", isThereBackWindows=" + isThereBackWindows() +
                 ", passengerSeatsCount=" + passengerSeatsCount +
                 '}';
+    }
+
+    @Override
+    public String carModel() {
+        String className = this.getClass().getName();
+        return className.substring(className.lastIndexOf(".") + 1);
     }
 }

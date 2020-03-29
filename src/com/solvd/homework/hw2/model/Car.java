@@ -1,6 +1,9 @@
 package com.solvd.homework.hw2.model;
 
-public class Car extends Vehicle {
+import com.solvd.homework.hw2.model.interfaces.ICar;
+import com.solvd.homework.hw2.model.interfaces.Info;
+
+public class Car extends Vehicle implements ICar, Info {
     private String color;
     private String number;
     private int maxSpeed;
@@ -15,28 +18,6 @@ public class Car extends Vehicle {
     }
 
     public Car() {
-    }
-
-    public void honk() {
-        System.out.println("Beep beep!");
-    }
-
-    public int accelerate(double a) {
-        if ((velocity+a) <= maxSpeed)
-            velocity += a;
-        else
-            velocity = maxSpeed;
-
-        return velocity;
-    }
-
-    public int decelerate(double a) {
-        if ((velocity-a) >= 0)
-            velocity -= a;
-        else
-            velocity = 0;
-
-        return velocity;
     }
 
     public void showVelocity() {
@@ -86,6 +67,11 @@ public class Car extends Vehicle {
     }
 
     @Override
+    public void honk() {
+        System.out.println("Beep beep!");
+    }
+
+    @Override
     public String toString() {
         return "Car{" +
                 "engine='" + getEngine() + '\'' +
@@ -94,5 +80,30 @@ public class Car extends Vehicle {
                 ", maxSpeed=" + maxSpeed +
                 ", year=" + year +
                 '}';
+    }
+
+    @Override
+    public int accelerate(double a) {
+        if ((velocity+a) <= maxSpeed)
+            velocity += a;
+        else
+            velocity = maxSpeed;
+
+        return velocity;
+    }
+
+    @Override
+    public int decelerate(double a) {
+        if ((velocity-a) >= 0)
+            velocity -= a;
+        else
+            velocity = 0;
+
+        return velocity;
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println(this);
     }
 }

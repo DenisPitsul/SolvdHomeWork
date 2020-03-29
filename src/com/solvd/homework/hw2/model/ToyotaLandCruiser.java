@@ -1,6 +1,8 @@
 package com.solvd.homework.hw2.model;
 
-public class ToyotaLandCruiser extends SUV {
+import com.solvd.homework.hw2.model.interfaces.ICarModel;
+
+public class ToyotaLandCruiser extends SUV implements ICarModel {
     private boolean isThereBackViewCamera;
 
     public ToyotaLandCruiser(int maxSpeed, int year) {
@@ -28,7 +30,8 @@ public class ToyotaLandCruiser extends SUV {
     @Override
     public String toString() {
         return "ToyotaLandCruiser{" +
-                "engine='" + getEngine() + '\'' +
+                "model='" + carModel() + '\'' +
+                ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
@@ -37,5 +40,11 @@ public class ToyotaLandCruiser extends SUV {
                 ", clearanceLength=" + getClearanceLength() +
                 ", isThereBackViewCamera=" + isThereBackViewCamera +
                 '}';
+    }
+
+    @Override
+    public String carModel() {
+        String className = this.getClass().getName();
+        return className.substring(className.lastIndexOf(".") + 1);
     }
 }
