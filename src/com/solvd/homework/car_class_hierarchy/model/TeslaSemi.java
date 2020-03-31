@@ -1,6 +1,6 @@
-package com.solvd.homework.hw2.model;
+package com.solvd.homework.car_class_hierarchy.model;
 
-import com.solvd.homework.hw2.model.interfaces.CarModel;
+import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
 
 public class TeslaSemi extends Truck implements CarModel {
     private int batteryPowerReserve; // battery power in kilometers of autonomous driving

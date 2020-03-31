@@ -1,8 +1,8 @@
-package com.solvd.homework.hw2.model;
+package com.solvd.homework.car_class_hierarchy.model;
 
-import com.solvd.homework.hw2.model.interfaces.Info;
+import com.solvd.homework.car_class_hierarchy.model.interfaces.Info;
 
-public class Car extends Vehicle implements com.solvd.homework.hw2.model.interfaces.Car, Info {
+public class Car extends Vehicle implements com.solvd.homework.car_class_hierarchy.model.interfaces.Car, Info {
     private String color;
     private String number;
     private int maxSpeed;

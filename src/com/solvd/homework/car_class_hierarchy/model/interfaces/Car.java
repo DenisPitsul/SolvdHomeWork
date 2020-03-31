@@ -1,4 +1,4 @@
-package com.solvd.homework.hw2.model.interfaces;
+package com.solvd.homework.car_class_hierarchy.model.interfaces;
 
 public interface Car {
     int accelerate(double a);

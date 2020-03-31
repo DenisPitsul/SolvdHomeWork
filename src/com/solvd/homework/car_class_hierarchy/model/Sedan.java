@@ -1,4 +1,4 @@
-package com.solvd.homework.hw2.model;
+package com.solvd.homework.car_class_hierarchy.model;
 
 public class Sedan extends Car {
     private int wheelRadius;

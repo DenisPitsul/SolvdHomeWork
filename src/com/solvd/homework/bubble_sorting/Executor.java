@@ -1,4 +1,4 @@
-package com.solvd.homework.hw1;
+package com.solvd.homework.bubble_sorting;
 
 import java.util.Scanner;
 

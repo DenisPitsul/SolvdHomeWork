@@ -1,6 +1,6 @@
-package com.solvd.homework.hw2.model;
+package com.solvd.homework.car_class_hierarchy.model;
 
-import com.solvd.homework.hw2.model.interfaces.CarModel;
+import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
 
 public class ToyotaLandCruiser extends SUV implements CarModel {
     private boolean isThereBackViewCamera;
