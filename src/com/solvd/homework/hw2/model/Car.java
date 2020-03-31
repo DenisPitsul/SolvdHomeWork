@@ -1,9 +1,8 @@
 package com.solvd.homework.hw2.model;
 
-import com.solvd.homework.hw2.model.interfaces.ICar;
 import com.solvd.homework.hw2.model.interfaces.Info;
 
-public class Car extends Vehicle implements ICar, Info {
+public class Car extends Vehicle implements com.solvd.homework.hw2.model.interfaces.Car, Info {
     private String color;
     private String number;
     private int maxSpeed;

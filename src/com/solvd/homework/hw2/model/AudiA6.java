@@ -1,8 +1,8 @@
 package com.solvd.homework.hw2.model;
 
-import com.solvd.homework.hw2.model.interfaces.ICarModel;
+import com.solvd.homework.hw2.model.interfaces.CarModel;
 
-public class AudiA6 extends Sedan implements ICarModel {
+public class AudiA6 extends Sedan implements CarModel {
     private String salon;
     private boolean isThereBackViewCamera;
 
@@ -33,7 +33,7 @@ public class AudiA6 extends Sedan implements ICarModel {
     @Override
     public String toString() {
         return "AudiA6{" +
-                "model='" + carModel() + '\'' +
+                "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
@@ -46,7 +46,7 @@ public class AudiA6 extends Sedan implements ICarModel {
     }
 
     @Override
-    public String carModel() {
+    public String getCarModel() {
         String className = this.getClass().getName();
         return className.substring(className.lastIndexOf(".") + 1);
     }

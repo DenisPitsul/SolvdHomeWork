@@ -1,8 +1,8 @@
 package com.solvd.homework.hw2.model;
 
-import com.solvd.homework.hw2.model.interfaces.ICarModel;
+import com.solvd.homework.hw2.model.interfaces.CarModel;
 
-public class MercedesVito extends MiniBus implements ICarModel {
+public class MercedesVito extends MiniBus implements CarModel {
     private int passengerSeatsCount;
 
     public MercedesVito(int maxSpeed, int year) {
@@ -25,7 +25,7 @@ public class MercedesVito extends MiniBus implements ICarModel {
     @Override
     public String toString() {
         return "MercedesVito{" +
-                "model='" + carModel() + '\'' +
+                "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
@@ -38,7 +38,7 @@ public class MercedesVito extends MiniBus implements ICarModel {
     }
 
     @Override
-    public String carModel() {
+    public String getCarModel() {
         String className = this.getClass().getName();
         return className.substring(className.lastIndexOf(".") + 1);
     }

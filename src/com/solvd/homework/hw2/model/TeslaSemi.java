@@ -1,8 +1,8 @@
 package com.solvd.homework.hw2.model;
 
-import com.solvd.homework.hw2.model.interfaces.ICarModel;
+import com.solvd.homework.hw2.model.interfaces.CarModel;
 
-public class TeslaSemi extends Truck implements ICarModel {
+public class TeslaSemi extends Truck implements CarModel {
     private int batteryPowerReserve; // battery power in kilometers of autonomous driving
 
     public TeslaSemi(int maxSpeed, int year) {
@@ -23,7 +23,7 @@ public class TeslaSemi extends Truck implements ICarModel {
     @Override
     public String toString() {
         return "TeslaSemi{" +
-                "model='" + carModel() + '\'' +
+                "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
@@ -35,7 +35,7 @@ public class TeslaSemi extends Truck implements ICarModel {
     }
 
     @Override
-    public String carModel() {
+    public String getCarModel() {
         String className = this.getClass().getName();
         return className.substring(className.lastIndexOf(".") + 1);
     }
