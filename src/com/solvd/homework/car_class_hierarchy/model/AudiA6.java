@@ -1,17 +1,25 @@
-package com.solvd.homework.hw2.model;
+package com.solvd.homework.car_class_hierarchy.model;
 
-import com.solvd.homework.hw2.model.interfaces.ICarModel;
+import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
 
-public class ToyotaLandCruiser extends SUV implements ICarModel {
+public class AudiA6 extends Sedan implements CarModel {
+    private String salon;
     private boolean isThereBackViewCamera;
 
-    public ToyotaLandCruiser(int maxSpeed, int year) {
-        super("V8 4.5", maxSpeed, year);
+    public AudiA6(int maxSpeed, int year) {
+        super("V6+Turbo", maxSpeed, year);
         this.isThereBackViewCamera = true;
-        setThereTopTrunk(true);
     }
 
-    public ToyotaLandCruiser() {
+    public AudiA6() {
+    }
+
+    public String getSalon() {
+        return salon;
+    }
+
+    public void setSalon(String salon) {
+        this.salon = salon;
     }
 
     public boolean isThereBackViewCamera() {
@@ -23,27 +31,22 @@ public class ToyotaLandCruiser extends SUV implements ICarModel {
     }
 
     @Override
-    public void setClearanceLength(int clearanceLength) {
-        super.setClearanceLength(clearanceLength + 5);
-    }
-
-    @Override
     public String toString() {
-        return "ToyotaLandCruiser{" +
-                "model='" + carModel() + '\'' +
+        return "AudiA6{" +
+                "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
-                ", isThereTopTrunk=" + isThereTopTrunk() +
-                ", clearanceLength=" + getClearanceLength() +
+                ", wheelRadius=" + getWheelRadius() +
+                ", salon='" + salon + '\'' +
                 ", isThereBackViewCamera=" + isThereBackViewCamera +
                 '}';
     }
 
     @Override
-    public String carModel() {
+    public String getCarModel() {
         String className = this.getClass().getName();
         return className.substring(className.lastIndexOf(".") + 1);
     }

@@ -1,9 +1,9 @@
-package com.solvd.homework.hw2;
+package com.solvd.homework.car_class_hierarchy;
 
-import com.solvd.homework.hw2.model.AudiA6;
-import com.solvd.homework.hw2.model.MercedesVito;
-import com.solvd.homework.hw2.model.TeslaSemi;
-import com.solvd.homework.hw2.model.ToyotaLandCruiser;
+import com.solvd.homework.car_class_hierarchy.model.AudiA6;
+import com.solvd.homework.car_class_hierarchy.model.MercedesVito;
+import com.solvd.homework.car_class_hierarchy.model.TeslaSemi;
+import com.solvd.homework.car_class_hierarchy.model.ToyotaLandCruiser;
 
 public class Executor {
 
