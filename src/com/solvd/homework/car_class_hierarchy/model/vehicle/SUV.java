@@ -1,4 +1,4 @@
-package com.solvd.homework.car_class_hierarchy.model;
+package com.solvd.homework.car_class_hierarchy.model.vehicle;
 
 public class SUV extends Car {
     private boolean isThereTopTrunk;
@@ -6,6 +6,12 @@ public class SUV extends Car {
 
     public SUV(String engine, int maxSpeed, int year) {
         super(engine, maxSpeed, year);
+    }
+
+    public SUV(String engine, String color, String number, int maxSpeed, int year, boolean isThereTopTrunk, int clearanceLength) {
+        super(engine, color, number, maxSpeed, year);
+        this.isThereTopTrunk = isThereTopTrunk;
+        this.clearanceLength = clearanceLength;
     }
 
     public SUV() {

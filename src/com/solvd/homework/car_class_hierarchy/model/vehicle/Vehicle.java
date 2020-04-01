@@ -1,4 +1,4 @@
-package com.solvd.homework.car_class_hierarchy.model;
+package com.solvd.homework.car_class_hierarchy.model.vehicle;
 
 public abstract class Vehicle {
     private String engine;

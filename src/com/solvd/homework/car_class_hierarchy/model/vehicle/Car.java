@@ -1,14 +1,20 @@
-package com.solvd.homework.car_class_hierarchy.model;
+package com.solvd.homework.car_class_hierarchy.model.vehicle;
 
-import com.solvd.homework.car_class_hierarchy.model.interfaces.Info;
-
-public class Car extends Vehicle implements com.solvd.homework.car_class_hierarchy.model.interfaces.Car, Info {
+public class Car extends Vehicle {
     private String color;
     private String number;
     private int maxSpeed;
     private int year;
 
     private int velocity;
+
+    public Car(String engine, String color, String number, int maxSpeed, int year) {
+        super(engine);
+        this.color = color;
+        this.number = number;
+        this.maxSpeed = maxSpeed;
+        this.year = year;
+    }
 
     public Car(String engine, int maxSpeed, int year) {
         super(engine);
@@ -81,28 +87,4 @@ public class Car extends Vehicle implements com.solvd.homework.car_class_hierarc
                 '}';
     }
 
-    @Override
-    public int accelerate(double a) {
-        if ((velocity+a) <= maxSpeed)
-            velocity += a;
-        else
-            velocity = maxSpeed;
-
-        return velocity;
-    }
-
-    @Override
-    public int decelerate(double a) {
-        if ((velocity-a) >= 0)
-            velocity -= a;
-        else
-            velocity = 0;
-
-        return velocity;
-    }
-
-    @Override
-    public void printInfo() {
-        System.out.println(this);
-    }
 }

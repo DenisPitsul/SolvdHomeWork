@@ -1,4 +1,4 @@
-package com.solvd.homework.car_class_hierarchy.model;
+package com.solvd.homework.car_class_hierarchy.model.vehicle;
 
 public class MiniBus extends Car {
     private boolean isPassenger;
@@ -6,6 +6,12 @@ public class MiniBus extends Car {
 
     public MiniBus(String engine, int maxSpeed, int year) {
         super(engine, maxSpeed, year);
+    }
+
+    public MiniBus(String engine, String color, String number, int maxSpeed, int year, boolean isPassenger, boolean isThereBackWindows) {
+        super(engine, color, number, maxSpeed, year);
+        this.isPassenger = isPassenger;
+        this.isThereBackWindows = isThereBackWindows;
     }
 
     public MiniBus() {
