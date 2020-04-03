@@ -1,45 +1,56 @@
-package com.solvd.homework.car_class_hierarchy.model.vehicle;
+package com.solvd.homework.car_class_hierarchy.model.vehicle.final_car;
 
 import com.solvd.homework.car_class_hierarchy.model.interfaces.Car;
 import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.Engine;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.Sedan;
 
-public class MercedesVito extends MiniBus implements CarModel, Car {
-    private int passengerSeatsCount;
+public final class AudiA6 extends Sedan implements CarModel, Car {
+    private String salon;
+    private boolean isThereBackViewCamera;
 
-    public MercedesVito(int maxSpeed, int year) {
-        super("Desel 2.2", maxSpeed, year);
-        setPassenger(true);
-        setThereBackWindows(true);
+    public AudiA6(int maxSpeed, int year) {
+        super(Engine.V6_TURBO, maxSpeed, year);
+        this.isThereBackViewCamera = true;
     }
 
-    public MercedesVito(String color, String number, int maxSpeed, int year, int passengerSeatsCount) {
-        super("Desel 2.2", color, number, maxSpeed, year, true, true);
-        this.passengerSeatsCount = passengerSeatsCount;
+    public AudiA6(String color, String number, int maxSpeed, int year, int wheelRadius, String salon) {
+        super(Engine.V6_TURBO, color, number, maxSpeed, year, wheelRadius);
+        this.salon = salon;
+        this.isThereBackViewCamera = true;
     }
 
-    public MercedesVito() {
+    public AudiA6() {
     }
 
-    public int getPassengerSeatsCount() {
-        return passengerSeatsCount;
+    public String getSalon() {
+        return salon;
     }
 
-    public void setPassengerSeatsCount(int passengerSeatsCount) {
-        this.passengerSeatsCount = passengerSeatsCount;
+    public void setSalon(String salon) {
+        this.salon = salon;
+    }
+
+    public boolean isThereBackViewCamera() {
+        return isThereBackViewCamera;
+    }
+
+    public void setThereBackViewCamera(boolean isThereBackViewCamera) {
+        this.isThereBackViewCamera = isThereBackViewCamera;
     }
 
     @Override
     public String toString() {
-        return "MercedesVito{" +
+        return "AudiA6{" +
                 "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
-                ", isPassenger=" + isPassenger() +
-                ", isThereBackWindows=" + isThereBackWindows() +
-                ", passengerSeatsCount=" + passengerSeatsCount +
+                ", wheelRadius=" + getWheelRadius() +
+                ", salon='" + salon + '\'' +
+                ", isThereBackViewCamera=" + isThereBackViewCamera +
                 '}';
     }
 
@@ -78,5 +89,4 @@ public class MercedesVito extends MiniBus implements CarModel, Car {
     public void printInfo() {
         System.out.println(this);
     }
-
 }

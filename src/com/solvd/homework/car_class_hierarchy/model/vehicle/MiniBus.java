@@ -4,11 +4,11 @@ public class MiniBus extends Car {
     private boolean isPassenger;
     private boolean isThereBackWindows;
 
-    public MiniBus(String engine, int maxSpeed, int year) {
+    public MiniBus(Engine engine, int maxSpeed, int year) {
         super(engine, maxSpeed, year);
     }
 
-    public MiniBus(String engine, String color, String number, int maxSpeed, int year, boolean isPassenger, boolean isThereBackWindows) {
+    public MiniBus(Engine engine, String color, String number, int maxSpeed, int year, boolean isPassenger, boolean isThereBackWindows) {
         super(engine, color, number, maxSpeed, year);
         this.isPassenger = isPassenger;
         this.isThereBackWindows = isThereBackWindows;

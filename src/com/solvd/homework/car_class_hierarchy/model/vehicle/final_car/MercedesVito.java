@@ -1,50 +1,47 @@
-package com.solvd.homework.car_class_hierarchy.model.vehicle;
+package com.solvd.homework.car_class_hierarchy.model.vehicle.final_car;
 
 import com.solvd.homework.car_class_hierarchy.model.interfaces.Car;
 import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.Engine;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.MiniBus;
 
-public class ToyotaLandCruiser extends SUV implements CarModel, Car {
-    private boolean isThereBackViewCamera;
+public final class MercedesVito extends MiniBus implements CarModel, Car {
+    private int passengerSeatsCount;
 
-    public ToyotaLandCruiser(int maxSpeed, int year) {
-        super("V8 4.5", maxSpeed, year);
-        this.isThereBackViewCamera = true;
-        setThereTopTrunk(true);
+    public MercedesVito(int maxSpeed, int year) {
+        super(Engine.DIESEL, maxSpeed, year);
+        setPassenger(true);
+        setThereBackWindows(true);
     }
 
-    public ToyotaLandCruiser(String color, String number, int maxSpeed, int year, int clearanceLength) {
-        super("V8 4.5", color, number, maxSpeed, year, true, clearanceLength + 5);
-        this.isThereBackViewCamera = true;
+    public MercedesVito(String color, String number, int maxSpeed, int year, int passengerSeatsCount) {
+        super(Engine.DIESEL, color, number, maxSpeed, year, true, true);
+        this.passengerSeatsCount = passengerSeatsCount;
     }
 
-    public ToyotaLandCruiser() {
+    public MercedesVito() {
     }
 
-    public boolean isThereBackViewCamera() {
-        return isThereBackViewCamera;
+    public int getPassengerSeatsCount() {
+        return passengerSeatsCount;
     }
 
-    public void setThereBackViewCamera(boolean isThereBackViewCamera) {
-        this.isThereBackViewCamera = isThereBackViewCamera;
-    }
-
-    @Override
-    public void setClearanceLength(int clearanceLength) {
-        super.setClearanceLength(clearanceLength + 5);
+    public void setPassengerSeatsCount(int passengerSeatsCount) {
+        this.passengerSeatsCount = passengerSeatsCount;
     }
 
     @Override
     public String toString() {
-        return "ToyotaLandCruiser{" +
+        return "MercedesVito{" +
                 "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
-                ", isThereTopTrunk=" + isThereTopTrunk() +
-                ", clearanceLength=" + getClearanceLength() +
-                ", isThereBackViewCamera=" + isThereBackViewCamera +
+                ", isPassenger=" + isPassenger() +
+                ", isThereBackWindows=" + isThereBackWindows() +
+                ", passengerSeatsCount=" + passengerSeatsCount +
                 '}';
     }
 

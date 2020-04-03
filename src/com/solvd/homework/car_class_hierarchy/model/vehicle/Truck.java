@@ -3,11 +3,11 @@ package com.solvd.homework.car_class_hierarchy.model.vehicle;
 public class Truck extends Car {
     private int liftingCapacity; // tons
 
-    public Truck(String engine, int maxSpeed, int year) {
+    public Truck(Engine engine, int maxSpeed, int year) {
         super(engine, maxSpeed, year);
     }
 
-    public Truck(String engine, String color, String number, int maxSpeed, int year, int liftingCapacity) {
+    public Truck(Engine engine, String color, String number, int maxSpeed, int year, int liftingCapacity) {
         super(engine, color, number, maxSpeed, year);
         this.liftingCapacity = liftingCapacity;
     }

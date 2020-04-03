@@ -1,54 +1,44 @@
-package com.solvd.homework.car_class_hierarchy.model.vehicle;
+package com.solvd.homework.car_class_hierarchy.model.vehicle.final_car;
 
 import com.solvd.homework.car_class_hierarchy.model.interfaces.Car;
 import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.Engine;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.Truck;
 
-public class AudiA6 extends Sedan implements CarModel, Car {
-    private String salon;
-    private boolean isThereBackViewCamera;
+public final class TeslaSemi extends Truck implements CarModel, Car {
+    private int batteryPowerReserve; // battery power in kilometers of autonomous driving
 
-    public AudiA6(int maxSpeed, int year) {
-        super("V6+Turbo", maxSpeed, year);
-        this.isThereBackViewCamera = true;
+    public TeslaSemi(int maxSpeed, int year) {
+        super(Engine.ELECTRO, maxSpeed, year);
     }
 
-    public AudiA6(String color, String number, int maxSpeed, int year, int wheelRadius, String salon) {
-        super("V6+Turbo", color, number, maxSpeed, year, wheelRadius);
-        this.salon = salon;
-        this.isThereBackViewCamera = true;
+    public TeslaSemi(String color, String number, int maxSpeed, int year, int liftingCapacity, int batteryPowerReserve) {
+        super(Engine.ELECTRO, color, number, maxSpeed, year, liftingCapacity);
+        this.batteryPowerReserve = batteryPowerReserve;
     }
 
-    public AudiA6() {
+    public TeslaSemi() {
     }
 
-    public String getSalon() {
-        return salon;
+    public int getBatteryPowerReserve() {
+        return batteryPowerReserve;
     }
 
-    public void setSalon(String salon) {
-        this.salon = salon;
-    }
-
-    public boolean isThereBackViewCamera() {
-        return isThereBackViewCamera;
-    }
-
-    public void setThereBackViewCamera(boolean isThereBackViewCamera) {
-        this.isThereBackViewCamera = isThereBackViewCamera;
+    public void setBatteryPowerReserve(int batteryPowerReserve) {
+        this.batteryPowerReserve = batteryPowerReserve;
     }
 
     @Override
     public String toString() {
-        return "AudiA6{" +
+        return "TeslaSemi{" +
                 "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
-                ", wheelRadius=" + getWheelRadius() +
-                ", salon='" + salon + '\'' +
-                ", isThereBackViewCamera=" + isThereBackViewCamera +
+                ", liftingCapacity=" + getLiftingCapacity() +
+                ", batteryPowerReserve=" + batteryPowerReserve +
                 '}';
     }
 
@@ -87,4 +77,5 @@ public class AudiA6 extends Sedan implements CarModel, Car {
     public void printInfo() {
         System.out.println(this);
     }
+
 }

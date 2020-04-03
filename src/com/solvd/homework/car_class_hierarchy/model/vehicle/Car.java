@@ -8,7 +8,7 @@ public class Car extends Vehicle {
 
     private int velocity;
 
-    public Car(String engine, String color, String number, int maxSpeed, int year) {
+    public Car(Engine engine, String color, String number, int maxSpeed, int year) {
         super(engine);
         this.color = color;
         this.number = number;
@@ -16,7 +16,7 @@ public class Car extends Vehicle {
         this.year = year;
     }
 
-    public Car(String engine, int maxSpeed, int year) {
+    public Car(Engine engine, int maxSpeed, int year) {
         super(engine);
         this.maxSpeed = maxSpeed;
         this.year = year;
@@ -71,8 +71,11 @@ public class Car extends Vehicle {
         }
     }
 
+    /**
+     *
+     */
     @Override
-    public void honk() {
+    public final void honk() {
         System.out.println("Beep beep!");
     }
 

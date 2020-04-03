@@ -1,42 +1,52 @@
-package com.solvd.homework.car_class_hierarchy.model.vehicle;
+package com.solvd.homework.car_class_hierarchy.model.vehicle.final_car;
 
 import com.solvd.homework.car_class_hierarchy.model.interfaces.Car;
 import com.solvd.homework.car_class_hierarchy.model.interfaces.CarModel;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.Engine;
+import com.solvd.homework.car_class_hierarchy.model.vehicle.SUV;
 
-public class TeslaSemi extends Truck implements CarModel, Car {
-    private int batteryPowerReserve; // battery power in kilometers of autonomous driving
+public final class ToyotaLandCruiser extends SUV implements CarModel, Car {
+    private boolean isThereBackViewCamera;
 
-    public TeslaSemi(int maxSpeed, int year) {
-        super("Eleсtro", maxSpeed, year);
+    public ToyotaLandCruiser(int maxSpeed, int year) {
+        super(Engine.V8, maxSpeed, year);
+        this.isThereBackViewCamera = true;
+        setThereTopTrunk(true);
     }
 
-    public TeslaSemi(String color, String number, int maxSpeed, int year, int liftingCapacity, int batteryPowerReserve) {
-        super("Eleсtro", color, number, maxSpeed, year, liftingCapacity);
-        this.batteryPowerReserve = batteryPowerReserve;
+    public ToyotaLandCruiser(String color, String number, int maxSpeed, int year, int clearanceLength) {
+        super(Engine.V8, color, number, maxSpeed, year, true, clearanceLength + 5);
+        this.isThereBackViewCamera = true;
     }
 
-    public TeslaSemi() {
+    public ToyotaLandCruiser() {
     }
 
-    public int getBatteryPowerReserve() {
-        return batteryPowerReserve;
+    public boolean isThereBackViewCamera() {
+        return isThereBackViewCamera;
     }
 
-    public void setBatteryPowerReserve(int batteryPowerReserve) {
-        this.batteryPowerReserve = batteryPowerReserve;
+    public void setThereBackViewCamera(boolean isThereBackViewCamera) {
+        this.isThereBackViewCamera = isThereBackViewCamera;
+    }
+
+    @Override
+    public void setClearanceLength(int clearanceLength) {
+        super.setClearanceLength(clearanceLength + 5);
     }
 
     @Override
     public String toString() {
-        return "TeslaSemi{" +
+        return "ToyotaLandCruiser{" +
                 "model='" + getCarModel() + '\'' +
                 ", engine='" + getEngine() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", number='" + getNumber() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
                 ", year=" + getYear() +
-                ", liftingCapacity=" + getLiftingCapacity() +
-                ", batteryPowerReserve=" + batteryPowerReserve +
+                ", isThereTopTrunk=" + isThereTopTrunk() +
+                ", clearanceLength=" + getClearanceLength() +
+                ", isThereBackViewCamera=" + isThereBackViewCamera +
                 '}';
     }
 

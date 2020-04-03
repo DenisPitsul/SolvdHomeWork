@@ -1,9 +1,9 @@
 package com.solvd.homework.car_class_hierarchy.model.vehicle;
 
 public abstract class Vehicle {
-    private String engine;
+    private Engine engine;
 
-    public Vehicle(String engine) {
+    public Vehicle(Engine engine) {
         this.engine = engine;
     }
 
@@ -11,10 +11,10 @@ public abstract class Vehicle {
     }
 
     public String getEngine() {
-        return engine;
+        return engine.getName();
     }
 
-    public void setEngine(String engine) {
+    public void setEngine(Engine engine) {
         this.engine = engine;
     }
 

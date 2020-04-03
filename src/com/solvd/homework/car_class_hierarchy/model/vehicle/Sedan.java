@@ -3,11 +3,11 @@ package com.solvd.homework.car_class_hierarchy.model.vehicle;
 public class Sedan extends Car {
     private int wheelRadius;
 
-    public Sedan(String engine, int maxSpeed, int year) {
+    public Sedan(Engine engine, int maxSpeed, int year) {
         super(engine, maxSpeed, year);
     }
 
-    public Sedan(String engine, String color, String number, int maxSpeed, int year, int wheelRadius) {
+    public Sedan(Engine engine, String color, String number, int maxSpeed, int year, int wheelRadius) {
         super(engine, color, number, maxSpeed, year);
         this.wheelRadius = wheelRadius;
     }

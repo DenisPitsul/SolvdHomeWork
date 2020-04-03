@@ -4,11 +4,11 @@ public class SUV extends Car {
     private boolean isThereTopTrunk;
     private int clearanceLength;
 
-    public SUV(String engine, int maxSpeed, int year) {
+    public SUV(Engine engine, int maxSpeed, int year) {
         super(engine, maxSpeed, year);
     }
 
-    public SUV(String engine, String color, String number, int maxSpeed, int year, boolean isThereTopTrunk, int clearanceLength) {
+    public SUV(Engine engine, String color, String number, int maxSpeed, int year, boolean isThereTopTrunk, int clearanceLength) {
         super(engine, color, number, maxSpeed, year);
         this.isThereTopTrunk = isThereTopTrunk;
         this.clearanceLength = clearanceLength;
