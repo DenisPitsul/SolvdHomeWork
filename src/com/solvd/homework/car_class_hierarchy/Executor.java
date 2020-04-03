@@ -13,12 +13,6 @@ public class Executor {
 
         System.out.println("--------------------------------------------------");
 
-//        AudiA6 audiA6 = new AudiA6(260, 2015);
-//        audiA6.setColor("black");
-//        audiA6.setNumber("CE4567AA");
-//        audiA6.setWheelRadius(19);
-//        audiA6.setSalon("Alcantara");
-
         AudiA6 audiA6 = new AudiA6("black", "CE4567AA", 260, 2015, 19, "Alcantara");
 
         System.out.println(audiA6.accelerate(30));
@@ -31,21 +25,11 @@ public class Executor {
 
         System.out.println("--------------------------------------------------");
 
-//        MercedesVito mercedesVito = new MercedesVito(240, 2012);
-//        mercedesVito.setColor("white");
-//        mercedesVito.setNumber("CE2901AA");
-//        mercedesVito.setPassengerSeatsCount(7);
-
         Car mercedesVito = new MercedesVito("white", "CE2901AA", 240, 2012, 7);
 
         mercedesVito.printInfo();
 
         System.out.println("--------------------------------------------------");
-
-//        ToyotaLandCruiser toyotaLandCruiser = new ToyotaLandCruiser(240, 2014);
-//        toyotaLandCruiser.setColor("yelow");
-//        toyotaLandCruiser.setNumber("CE6511AA");
-//        toyotaLandCruiser.setClearanceLength(50);
 
         Car toyotaLandCruiser = new ToyotaLandCruiser("yelow", "CE6511AA", 240, 2014, 50);
 
@@ -53,16 +37,10 @@ public class Executor {
 
         System.out.println("--------------------------------------------------");
 
-//        TeslaSemi teslaSemi = new TeslaSemi(200, 2017);
-//        teslaSemi.setColor("grey");
-//        teslaSemi.setNumber("CE4099AA");
-//        teslaSemi.setLiftingCapacity(20);
-//        teslaSemi.setBatteryPowerReserve(800);
-//        teslaSemi.honk();
-
         Car teslaSemi = new TeslaSemi("grey", "CE4099AA", 200, 2017, 20, 800);
 
         teslaSemi.printInfo();
+
 
         System.out.println("--------------------------------------------------");
         System.out.println("--------------------------------------------------");

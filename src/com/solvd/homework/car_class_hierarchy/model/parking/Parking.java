@@ -2,10 +2,6 @@ package com.solvd.homework.car_class_hierarchy.model.parking;
 
 import com.solvd.homework.car_class_hierarchy.model.interfaces.Car;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Parking {
     private Car[] parkingCars;
 
@@ -21,6 +17,11 @@ public class Parking {
         this.parkingCars = parkingCars;
     }
 
+    /**
+     * get first vacant parking space
+     *
+     * @return -1 if there isn"t any vacant parking space or number of first empty parking space
+     */
     private int getFirstEmptyParkingSpace() {
         int firstEmptyParkingSpace = -1;
         for (int i = 0; i < parkingCars.length; i++) {
@@ -32,9 +33,14 @@ public class Parking {
         return firstEmptyParkingSpace;
     }
 
+    /**
+     *  check that car is in the parking lot
+     *
+     * @param car - this car will be checked
+     * @return false if there is car on the parking or true if there isn't
+     */
     private boolean isThereCarOnTheParking(Car car) {
         boolean isCarOnTheParking = false;
-        int parkingSpaceNumber = -1;
         for (int i = 0; i < parkingCars.length; i++) {
             if (parkingCars[i] == car) {
                 isCarOnTheParking = true;
@@ -44,6 +50,12 @@ public class Parking {
         return isCarOnTheParking;
     }
 
+    /**
+     * park the car on the parking if there is vacant parking space or this car is not on the parking
+     * else print the message
+     *
+     * @param car - car which to park on the parking
+     */
     public void parkCar(Car car) {
         if (getFirstEmptyParkingSpace() == -1) {
             System.out.println("There are no available parking spaces!");
@@ -57,6 +69,11 @@ public class Parking {
         parkingCars[getFirstEmptyParkingSpace()] = car;
     }
 
+    /**
+     * overload method leaveTheParking(int parkingSpaceNumber)
+     *
+     * @param car - car which we pick up from the parking
+     */
     public void leaveTheParking(Car car) {
         int parkingSpaceNumber = -1;
         for (int i = 0; i < parkingCars.length; i++) {
@@ -74,7 +91,11 @@ public class Parking {
         System.out.println("Place " + parkingSpaceNumber + " has already vacated");
     }
 
-    // overload previous method
+    /**
+     * overload method leaveTheParking(Car car)
+     *
+     * @param parkingSpaceNumber - parking space number which we make vacant
+     */
     public void leaveTheParking(int parkingSpaceNumber) {
         if (parkingSpaceNumber < 0 || parkingSpaceNumber >= parkingCars.length) {
             System.out.println(parkingSpaceNumber + " place does not exist. Choose places from 0 to " + parkingCars.length);
@@ -89,6 +110,9 @@ public class Parking {
         System.out.println("Place " + parkingSpaceNumber + " has already vacated");
     }
 
+    /**
+     * show short info about cars which is present on the parking at the moment
+     */
     public void showInfoAboutCarsOnTheParking() {
         System.out.println("Parking {");
         for (int i = 0; i < parkingCars.length; i++) {
