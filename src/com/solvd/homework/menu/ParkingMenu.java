@@ -11,6 +11,12 @@ public class ParkingMenu {
         this.mainMenu = mainMenu;
     }
 
+    /**
+     * Choose a parking action.
+     * 1 -> Add car to parking
+     * 2 -> Leave car from the parking
+     * 3 -> Show all cars on the parking
+     */
     public void inputParkingOperation() {
         inputIndex = "";
         while(true) {
@@ -25,32 +31,30 @@ public class ParkingMenu {
                 System.out.println("Show all cars on the parking input ->  3|");
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
+                        mainMenu.openMainMenu();
+                        break;
+                    case "1":
+                        openParkCarMenu();
+                        break;
+                    case "2":
+                        openLeaveTheParkingMenu();
+                        break;
+                    case "3":
+                        mainMenu.showCarsOnTheParking();
+                        inputParkingOperation();
+                        break;
+                    default:
+                        System.out.println("You have to input number from menu.");
+                        inputParkingOperation();
+                        break;
                 }
-                else if (inputIndex.equals("-2")) {
-                    mainMenu.openMainMenu();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*)$")) {
-                    switch (inputIndex) {
-                        case "1":
-                            openParkCarMenu();
-                            break;
-                        case "2":
-                            openLeaveTheParkingMenu();
-                            break;
-                        case "3":
-                            mainMenu.showCarsOnTheParking();
-                            inputParkingOperation();
-                            break;
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -58,6 +62,9 @@ public class ParkingMenu {
         }
     }
 
+    /**
+     * Show all cars on the screen and choose number of car to add to the parking
+     */
     private void openParkCarMenu() {
         inputIndex = "";
         while(true) {
@@ -72,30 +79,34 @@ public class ParkingMenu {
                 mainMenu.showAllCars();
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
-                }
-                else if (inputIndex.equals("-2")) {
-                    inputParkingOperation();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
-                    int carIndex = Integer.parseInt(inputIndex);
-                    if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
-                        mainMenu.getParkingInstance().add(mainMenu.getCarListInstance().get(carIndex));
-                        System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " has parked");
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
                         inputParkingOperation();
-                    }
-                    else {
-                        System.out.println("Such car does not exist!");
-                        openParkCarMenu();
-                    }
-                    break;
+                        break;
+                    default:
+                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                            int carIndex = Integer.parseInt(inputIndex);
+                            if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
+                                mainMenu.getParkingInstance().add(mainMenu.getCarListInstance().get(carIndex));
+                                System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " has parked");
+                                inputParkingOperation();
+                            }
+                            else {
+                                System.out.println("Such car does not exist!");
+                                openParkCarMenu();
+                            }
+                        }
+                        else {
+                            System.out.println("You have to input correct number.");
+                            openParkCarMenu();
+                        }
+                        break;
                 }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -103,6 +114,9 @@ public class ParkingMenu {
         }
     }
 
+    /**
+     * Show all cars on the screen on the parking and choose number of car to leave the parking
+     */
     private void openLeaveTheParkingMenu() {
         inputIndex = "";
         while(true) {
@@ -117,29 +131,32 @@ public class ParkingMenu {
                 mainMenu.showCarsOnTheParking();
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
-                }
-                else if (inputIndex.equals("-2")) {
-                    inputParkingOperation();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
-                    int carIndex = Integer.parseInt(inputIndex);
-                    if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
-                        mainMenu.getParkingInstance().leaveTheParking(carIndex);
-                        System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " left the parking");
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
                         inputParkingOperation();
-                    }
-                    else {
-                        System.out.println("Such car does not exist on the parking!");
-                        openLeaveTheParkingMenu();
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
+                        break;
+                    default:
+                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                            int carIndex = Integer.parseInt(inputIndex);
+                            if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
+                                mainMenu.getParkingInstance().leaveTheParking(carIndex);
+                                System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " left the parking");
+                                inputParkingOperation();
+                            }
+                            else {
+                                System.out.println("Such car does not exist on the parking!");
+                                openLeaveTheParkingMenu();
+                            }
+                        }
+                        else {
+                            System.out.println("You have to input correct number.");
+                            openLeaveTheParkingMenu();
+                        }
+                        break;
                 }
             }
             catch(Exception e) {

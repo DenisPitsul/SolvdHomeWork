@@ -22,4 +22,8 @@ public abstract class Vehicle {
 
     public abstract void honk();
 
+    public abstract String getShortInfo();
+
+    public abstract String getCarModel();
+
 }

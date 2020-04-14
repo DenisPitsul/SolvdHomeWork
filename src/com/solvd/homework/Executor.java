@@ -8,9 +8,7 @@ public class Executor {
     private static Scanner in;
 
     public static void main(String[] args) {
-
         MainMenu mainMenu = new MainMenu();
         mainMenu.openMainMenu();
-
     }
 }

@@ -1,12 +1,20 @@
 package com.solvd.homework.factory_method.creator;
 
-import com.solvd.homework.vehicle.interfaces.Car;
+import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.MercedesVito;
 
 public class MercedesVitoCreator implements CarCreator {
 
+    /**
+     * create Mercedes Vito instance
+     * @param color -> parameter of the car
+     * @param number -> parameter of the car
+     * @param maxSpeed -> parameter of the car
+     * @param year -> parameter of the car
+     * @return Mercedes Vito instance
+     */
     @Override
-    public Car createCar(String color, String number, int maxSpeed, int year) {
+    public Vehicle createCar(String color, String number, int maxSpeed, int year) {
         return new MercedesVito(color, number, maxSpeed, year, 7);
     }
 

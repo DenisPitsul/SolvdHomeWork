@@ -54,6 +54,10 @@ public class Address {
         return sb.toString();
     }
 
+    /**
+     * Class builder through which we will initialize the object of the class Address via setters
+     * and return this address via the build () method
+     */
     public static class Builder {
         private String city;
         private String district;

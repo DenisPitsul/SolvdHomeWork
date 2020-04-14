@@ -2,14 +2,14 @@ package com.solvd.homework.menu;
 
 
 import com.solvd.homework.place.*;
-import com.solvd.homework.vehicle.interfaces.Car;
+import com.solvd.homework.vehicle.Vehicle;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
-    private List<Car> carList;
+    private List<Vehicle> carList;
     private Parking parking;
     private CarDealership carDealership;
     private Homes homes;
@@ -20,10 +20,15 @@ public class MainMenu {
     private HomesMenu homesMenu;
 
     private Scanner in;
+    private String inputIndex;
 
     public MainMenu() {
     }
 
+    /**
+     * If we have not opened CarMenu instance yet then create and return
+     * @return carMenu instance
+     */
     private CarMenu getCarMenuInstance() {
         if (carMenu == null) {
             carMenu = new CarMenu(this);
@@ -31,6 +36,10 @@ public class MainMenu {
         return carMenu;
     }
 
+    /**
+     * If we have not opened ParkingMenu instance yet then create and return
+     * @return parkingMenu instance
+     */
     private ParkingMenu getParkingMenuInstance() {
         if (parkingMenu == null) {
             parkingMenu = new ParkingMenu(this);
@@ -38,6 +47,10 @@ public class MainMenu {
         return parkingMenu;
     }
 
+    /**
+     * If we have not opened CarDealershipMenu instance yet then create and return
+     * @return carDealershipMenu instance
+     */
     private CarDealershipMenu getCarDealershipMenuInstance() {
         if (carDealershipMenu == null) {
             carDealershipMenu = new CarDealershipMenu(this);
@@ -45,6 +58,10 @@ public class MainMenu {
         return carDealershipMenu;
     }
 
+    /**
+     * If we have not opened HomesMenu instance yet then create and return
+     * @return homesMenu instance
+     */
     private HomesMenu getHomesMenuInstance() {
         if (homesMenu == null) {
             homesMenu = new HomesMenu(this);
@@ -52,13 +69,21 @@ public class MainMenu {
         return homesMenu;
     }
 
-    public List<Car> getCarListInstance() {
+    /**
+     * If we have not list of car instance yet then create and return
+     * @return list of car instance
+     */
+    public List<Vehicle> getCarListInstance() {
         if (carList == null) {
             carList = new LinkedList<>();
         }
         return carList;
     }
 
+    /**
+     * If we have not parking instance yet then create and return
+     * @return parking instance
+     */
     public Parking getParkingInstance() {
         if (parking == null) {
             parking = new Parking();
@@ -66,6 +91,10 @@ public class MainMenu {
         return parking;
     }
 
+    /**
+     * If we have not car dealership instance yet then create and return
+     * @return car dealership instance
+     */
     public CarDealership getCarDealershipInstance() {
         if (carDealership == null) {
             carDealership = new CarDealership();
@@ -73,6 +102,10 @@ public class MainMenu {
         return carDealership;
     }
 
+    /**
+     * If we have not homes instance yet then create and return
+     * @return homes instance
+     */
     public Homes getHomesInstance() {
         if (homes == null) {
             homes = new Homes();
@@ -80,6 +113,9 @@ public class MainMenu {
         return homes;
     }
 
+    /**
+     * Show all created car on the screen
+     */
     public void showAllCars() {
         if (carList == null || carList.size() == 0) {
             System.out.println("There is not any car!");
@@ -89,7 +125,7 @@ public class MainMenu {
         StringBuilder sb = new StringBuilder();
         sb.append("All cars {\n");
         int i = 0;
-        for (Car car : carList) {
+        for (Vehicle car : carList) {
             sb.append("\tCar №").append(i).append(": ").append(car.getShortInfo()).append("\n");
             i++;
         }
@@ -97,6 +133,9 @@ public class MainMenu {
         System.out.println(sb.toString());
     }
 
+    /**
+     * Show all parked car on the screen
+     */
     public void showCarsOnTheParking() {
         if (getParkingInstance().getParkingCars() == null || getParkingInstance().getParkingCars().size() == 0) {
             System.out.println("There is not any car on the parking!");
@@ -106,6 +145,9 @@ public class MainMenu {
         parking.showInfo();
     }
 
+    /**
+     * Show all car in the car dealership on the screen
+     */
     public void showCarsInTheCarDealership() {
         if (getCarDealershipInstance().getSellingCars() == null || getCarDealershipInstance().getSellingCars().size() == 0) {
             System.out.println("There is not any car in the car dealership!");
@@ -115,6 +157,9 @@ public class MainMenu {
         carDealership.showInfo();
     }
 
+    /**
+     * Show homes with addresses and garages on the screen
+     */
     public void showAllHomes() {
         if (getHomesInstance().getHomes() == null || getHomesInstance().getHomes().size() == 0) {
             System.out.println("There is not any homes!");
@@ -124,8 +169,14 @@ public class MainMenu {
         homes.showInfo();
     }
 
+    /**
+     * open main menu and choose option to do some operation
+     * 1 -> choose car menu
+     * 2 -> choose parking menu
+     * 3 -> choose car dealership menu
+     * 4 -> choose home menu
+     */
     public void openMainMenu() {
-        int menuIndex;
         while(true) {
             try {
                 in = new Scanner(System.in);
@@ -138,31 +189,30 @@ public class MainMenu {
                 System.out.println("Car dealership menu input          ->  3|");
                 System.out.println("Home menu input                    ->  4|");
 
-                menuIndex = in.nextInt();
-                if (menuIndex == 10) {
-                    System.exit(0);
-                    break;
+                inputIndex = in.nextLine();
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "1":
+                        openCarMenu();
+                        break;
+                    case "2":
+                        openParkingMenu();
+                        break;
+                    case "3":
+                        openCarDealership();
+                        break;
+                    case "4":
+                        openHomeMenu();
+                        break;
+                    default:
+                        System.out.println("You have to input number from menu.");
+                        openMainMenu();
+                        break;
                 }
-                else if (menuIndex >= 1 && menuIndex <= 4) {
-                    switch (menuIndex) {
-                        case 1:
-                            openCarMenu();
-                            break;
-                        case 2:
-                            openParkingMenu();
-                            break;
-                        case 3:
-                            openCarDealership();
-                            break;
-                        case 4:
-                            openHomeMenu();
-                            break;
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -170,21 +220,33 @@ public class MainMenu {
         }
     }
 
+    /**
+     * Go to car menu
+     */
     private void openCarMenu() {
         CarMenu carMenu = getCarMenuInstance();
         carMenu.inputCarType();
     }
 
+    /**
+     * Go to parking menu
+     */
     private void openParkingMenu() {
         ParkingMenu parkingMenu = getParkingMenuInstance();
         parkingMenu.inputParkingOperation();
     }
 
+    /**
+     * Go to car dealership menu
+     */
     private void openCarDealership() {
         CarDealershipMenu carDealershipMenu = getCarDealershipMenuInstance();
         carDealershipMenu.inputCarDealershipOperation();
     }
 
+    /**
+     * Go to homes menu
+     */
     private void openHomeMenu() {
         HomesMenu homesMenu = getHomesMenuInstance();
         homesMenu.inputHomesOperation();

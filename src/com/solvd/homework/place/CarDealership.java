@@ -1,35 +1,44 @@
 package com.solvd.homework.place;
 
-import com.solvd.homework.vehicle.interfaces.Car;
+import com.solvd.homework.vehicle.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarDealership implements CarPlace{
-    private List<Car> sellingCars;
+public class CarDealership<T extends Vehicle> implements CarPlace<T> {
+    private List<T> sellingCars;
 
     public CarDealership() {
         sellingCars = new ArrayList<>();
     }
 
-    public List<Car> getSellingCars() {
+    public List<T> getSellingCars() {
         return sellingCars;
     }
 
-    public void setSellingCars(List<Car> sellingCars) {
+    public void setSellingCars(List<T> sellingCars) {
         this.sellingCars = sellingCars;
     }
 
+    /**
+     * add car to car dealership
+     * @param car -> will added to this car dealership
+     */
     @Override
-    public void add(Car car) {
+    public void add(T car) {
         sellingCars.add(car);
     }
 
+    /**
+     * Leave car from the car dealership
+     * @param selectedCar -> car which have to delete from this car dealership
+     * @return deleted car or null if selectedCar weren't in this car dealership
+     */
     @Override
-    public Car leaveThePlace(Car selectedCar) {
-        Car car = null;
+    public T leaveThePlace(T selectedCar) {
+        T car = null;
         boolean isCarExist = false;
-        for (Car eachCar : sellingCars) {
+        for (T eachCar : sellingCars) {
             if (eachCar == selectedCar) {
                 car = selectedCar;
                 isCarExist = true;
@@ -43,18 +52,26 @@ public class CarDealership implements CarPlace{
         return car;
     }
 
-    public Car leaveTheCarDealership(int carPlaceIndex) {
+    /**
+     * Leave car from the car dealership by index
+     * @param carPlaceIndex -> index of car in car in car dealer ship which have to delete from this car dealership
+     * @return deleted car or null if there is not any cars in the car dealership by index
+     */
+    public T leaveTheCarDealership(int carPlaceIndex) {
         if (sellingCars.get(carPlaceIndex) == null) {
             return null;
         }
         return sellingCars.remove(carPlaceIndex);
     }
 
+    /**
+     * Show all cars in the car dealership on the screen
+     */
     @Override
     public void showInfo() {
         System.out.println("Car dealership {");
         int i = 0;
-        for (Car car : sellingCars) {
+        for (T car : sellingCars) {
             System.out.println("\tCar №" + i + ": " + car.getShortInfo());
             i++;
         }

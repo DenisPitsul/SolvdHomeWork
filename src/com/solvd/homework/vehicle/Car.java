@@ -73,12 +73,19 @@ public class Car extends Vehicle {
         }
     }
 
-    /**
-     *
-     */
     @Override
     public final void honk() {
         System.out.println("Beep beep!");
+    }
+
+    @Override
+    public String getShortInfo() {
+        return "Car{model='" + this.getCarModel() + "', number='" + this.getNumber() + "'}";
+    }
+
+    @Override
+    public String getCarModel() {
+        return "Car";
     }
 
     @Override

@@ -42,6 +42,10 @@ public class HomesMenu {
         return mainMenu;
     }
 
+    /**
+     * if we have not opened AddressMenu instance yet then create and return
+     * @return addressMenu instance
+     */
     private AddressMenu getAddressMenuInstance() {
         if (addressMenu == null) {
             addressMenu = new AddressMenu(this);
@@ -49,6 +53,10 @@ public class HomesMenu {
         return addressMenu;
     }
 
+    /**
+     * if we have not opened GarageMenu instance yet then create and return
+     * @return garageMenu instance
+     */
     private GarageMenu getGarageMenuInstance() {
         if (garageMenu == null) {
             garageMenu = new GarageMenu(this);
@@ -57,6 +65,9 @@ public class HomesMenu {
         return garageMenu;
     }
 
+    /**
+     * Show all added car in current garage on the screen
+     */
     public void showCarInTheGarage() {
         if (getGarage().getCarsInGarage() == null || getGarage().getCarsInGarage().size() == 0) {
             System.out.println("There is not any car in the garage!");
@@ -66,6 +77,12 @@ public class HomesMenu {
         garage.showInfo();
     }
 
+    /**
+     * Choose a home action.
+     * 1 -> Create home
+     * 2 -> delete home
+     * 3 -> Show info about all homes
+     */
     public void inputHomesOperation() {
         inputIndex = "";
         while(true) {
@@ -77,36 +94,34 @@ public class HomesMenu {
                 System.out.println("----------------------------------------|");
                 System.out.println("Create home input                  ->  1|");
                 System.out.println("Delete home input                  ->  2|");
-                System.out.println("Show info all homes                ->  3|");
+                System.out.println("Show info about all homes          ->  3|");
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
+                        mainMenu.openMainMenu();
+                        break;
+                    case "1":
+                        garage = new Garage();
+                        openCreateHomeMenu();
+                        break;
+                    case "2":
+                        openDeleteHomeMenu();
+                        break;
+                    case "3":
+                        mainMenu.showAllHomes();
+                        inputHomesOperation();
+                        break;
+                    default:
+                        System.out.println("You have to input number from menu.");
+                        inputHomesOperation();
+                        break;
                 }
-                else if (inputIndex.equals("-2")) {
-                    mainMenu.openMainMenu();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*)$")) {
-                    switch (inputIndex) {
-                        case "1":
-                            garage = new Garage();
-                            openCreateHomeMenu();
-                            break;
-                        case "2":
-                            openDeleteHomeMenu();
-                            break;
-                        case "3":
-                            mainMenu.showAllHomes();
-                            inputHomesOperation();
-                            break;
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -114,7 +129,13 @@ public class HomesMenu {
         }
     }
 
-
+    /**
+     * To create home to have to create address of home and add car to garage.
+     * In this method we choose option to create the address of the home
+     * Choose 1 to address of the home manually
+     * Choose 2 to address of the home automatically
+     * If we choose 2 address of the home will be created and will open garage menu
+     */
     public void openCreateHomeMenu() {
         inputIndex = "";
         while(true) {
@@ -128,29 +149,32 @@ public class HomesMenu {
                 System.out.println("Create address automatically       ->  2|");
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
+                        inputHomesOperation();
+                        break;
+                    case "1":
+                        openAddressMenu();
+                        break;
+                    case "2":
+                        address = new Address.Builder()
+                                .setCity("Chernivtsy")
+                                .setStreet("Nebesnoy sotny")
+                                .setHouseNumber(houseNumber)
+                                .build();
+                        houseNumber++;
+                        openGarageMenu();
+                        break;
+                    default:
+                        System.out.println("You have to input correct number.");
+                        openCreateHomeMenu();
+                        break;
                 }
-                else if (inputIndex.equals("-2")) {
-                    inputHomesOperation();
-                    break;
-                }
-                else if (inputIndex.equals("1")) {
-                    openAddressMenu();
-                    break;
-                }
-                else if (inputIndex.equals("2")) {
-                    address = new Address.Builder()
-                            .setCity("Chernivtsy")
-                            .setStreet("Nebesnoy sotny")
-                            .setHouseNumber(houseNumber)
-                            .build();
-                    openGarageMenu();
-                }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -158,6 +182,9 @@ public class HomesMenu {
         }
     }
 
+    /**
+     * Show all homes on the screen and choose number of home to leave delete
+     */
     public void openDeleteHomeMenu() {
         inputIndex = "";
         while(true) {
@@ -172,29 +199,33 @@ public class HomesMenu {
                 mainMenu.showAllHomes();
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
-                }
-                else if (inputIndex.equals("-2")) {
-                    inputHomesOperation();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
-                    int carIndex = Integer.parseInt(inputIndex);
-                    if (carIndex >= 0 && carIndex < mainMenu.getHomesInstance().getHomes().size()) {
-                        mainMenu.getHomesInstance().deleteHome(carIndex);
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
                         inputHomesOperation();
-                    }
-                    else {
-                        System.out.println("Such home does not exist!");
-                        openDeleteHomeMenu();
-                    }
-                    break;
+                        break;
+                    default:
+                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                            int carIndex = Integer.parseInt(inputIndex);
+                            if (carIndex >= 0 && carIndex < mainMenu.getHomesInstance().getHomes().size()) {
+                                mainMenu.getHomesInstance().deleteHome(carIndex);
+                                inputHomesOperation();
+                            }
+                            else {
+                                System.out.println("Such home does not exist!");
+                                openDeleteHomeMenu();
+                            }
+                        }
+                        else {
+                            System.out.println("You have to input correct number.");
+                            openDeleteHomeMenu();
+                        }
+                        break;
                 }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -202,16 +233,25 @@ public class HomesMenu {
         }
     }
 
+    /**
+     * Go to address menu
+     */
     public void openAddressMenu() {
         AddressMenu addressMenu = getAddressMenuInstance();
         addressMenu.inputAddressManually();
     }
 
+    /**
+     * Go to garage menu
+     */
     public void openGarageMenu() {
         GarageMenu garageMenu = getGarageMenuInstance();
         garageMenu.inputGarageOperation();
     }
 
+    /**
+     * Add home with address and garage to map
+     */
     public void createHome() {
         mainMenu.getHomesInstance().getHomes().put(address, garage);
     }

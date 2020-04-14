@@ -1,13 +1,18 @@
 package com.solvd.homework.factory_method;
 
 import com.solvd.homework.factory_method.creator.*;
-import com.solvd.homework.vehicle.interfaces.Car;
+import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.helper.CarModel;
 
 public class FactoryMethodCar {
 
-    public static Car createCar(CarModel carModel) {
-        Car car = null;
+    /**
+     * create car instance by carModel
+     * @param carModel -> model of the car we have to create an instance of
+     * @return created car instance
+     */
+    public static Vehicle createCar(CarModel carModel) {
+        Vehicle car = null;
         CarCreator creator;
 
         switch (carModel) {
@@ -21,14 +26,15 @@ public class FactoryMethodCar {
                 break;
             case TOYOTA_LAND_CRUISER:
                 creator = new ToyotaLandCruiserCreator();
-                car = creator.createCar("yelow", "CE6511AA", 240, 2014);
+                car = creator.createCar("yellow", "CE6511AA", 240, 2014);
                 break;
             case TESLA_SEMI:
                 creator = new TeslaSemiCreator();
                 car = creator.createCar("grey", "CE4099AA", 200, 2017);
                 break;
             default:
-                System.out.println("Please use correct car model!");
+                creator = new DefaultCreator();
+                car = creator.createCar("blue", "CE4100AA", 250, 2014);
                 break;
         }
 

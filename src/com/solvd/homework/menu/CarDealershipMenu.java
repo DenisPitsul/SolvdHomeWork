@@ -11,6 +11,12 @@ public class CarDealershipMenu {
         this.mainMenu = mainMenu;
     }
 
+    /**
+     * Choose a car dealership action.
+     * 1 -> Add car to car dealership
+     * 2 -> Leave car from the car dealership
+     * 3 -> Show all cars on the car dealership
+     */
     public void inputCarDealershipOperation() {
         inputIndex = "";
         while(true) {
@@ -25,32 +31,30 @@ public class CarDealershipMenu {
                 System.out.println("Show all cars in the car dealership input ->  3|");
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
+                        mainMenu.openMainMenu();
+                        break;
+                    case "1":
+                        openAddCarDealershipMenu();
+                        break;
+                    case "2":
+                        openLeaveCarFromTheCarDealershipMenu();
+                        break;
+                    case "3":
+                        mainMenu.showCarsInTheCarDealership();
+                        inputCarDealershipOperation();
+                        break;
+                    default:
+                        System.out.println("You have to input number from menu.");
+                        inputCarDealershipOperation();
+                        break;
                 }
-                else if (inputIndex.equals("-2")) {
-                    mainMenu.openMainMenu();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*)$")) {
-                    switch (inputIndex) {
-                        case "1":
-                            openAddCarDealershipMenu();
-                            break;
-                        case "2":
-                            openLeaveCarFromTheCarDealershipMenu();
-                            break;
-                        case "3":
-                            mainMenu.showCarsInTheCarDealership();
-                            inputCarDealershipOperation();
-                            break;
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
-                }
+                break;
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -58,6 +62,9 @@ public class CarDealershipMenu {
         }
     }
 
+    /**
+     * Show all cars on the screen and choose number of car to add to the car dealership
+     */
     private void openAddCarDealershipMenu() {
         inputIndex = "";
         while(true) {
@@ -72,29 +79,33 @@ public class CarDealershipMenu {
                 mainMenu.showAllCars();
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
-                }
-                else if (inputIndex.equals("-2")) {
-                    inputCarDealershipOperation();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
-                    int carIndex = Integer.parseInt(inputIndex);
-                    if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
-                        mainMenu.getCarDealershipInstance().add(mainMenu.getCarListInstance().get(carIndex));
-                        System.out.println(mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " added to car dealership");
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
                         inputCarDealershipOperation();
-                    }
-                    else {
-                        System.out.println("Such car does not exist!");
-                        openAddCarDealershipMenu();
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
+                        break;
+                    default:
+                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                            int carIndex = Integer.parseInt(inputIndex);
+                            if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
+                                mainMenu.getCarDealershipInstance().add(mainMenu.getCarListInstance().get(carIndex));
+                                System.out.println(mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " added to car dealership");
+                                inputCarDealershipOperation();
+                            }
+                            else {
+                                System.out.println("Such car does not exist!");
+                                openAddCarDealershipMenu();
+                            }
+                            break;
+                        }
+                        else {
+                            System.out.println("You have to input correct number.");
+                            openAddCarDealershipMenu();
+                        }
+                        break;
                 }
             }
             catch(Exception e) {
@@ -103,6 +114,9 @@ public class CarDealershipMenu {
         }
     }
 
+    /**
+     * Show all cars on the screen in the car dealership and choose number of car to leave the car dealership
+     */
     private void openLeaveCarFromTheCarDealershipMenu() {
         inputIndex = "";
         while(true) {
@@ -117,29 +131,32 @@ public class CarDealershipMenu {
                 mainMenu.showCarsInTheCarDealership();
 
                 inputIndex = in.nextLine();
-                if (inputIndex.equals("-1")) {
-                    System.exit(0);
-                    break;
-                }
-                else if (inputIndex.equals("-2")) {
-                    inputCarDealershipOperation();
-                    break;
-                }
-                else if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
-                    int carIndex = Integer.parseInt(inputIndex);
-                    if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
-                        mainMenu.getCarDealershipInstance().leaveTheCarDealership(carIndex);
-                        System.out.println(mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " left the car dealership");
+
+                switch (inputIndex) {
+                    case "-1":
+                        System.exit(0);
+                        break;
+                    case "-2":
                         inputCarDealershipOperation();
-                    }
-                    else {
-                        System.out.println("Such car does not exist on the parking!");
-                        openLeaveCarFromTheCarDealershipMenu();
-                    }
-                    break;
-                }
-                else {
-                    System.out.println("You have to input correct number.");
+                        break;
+                    default:
+                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                            int carIndex = Integer.parseInt(inputIndex);
+                            if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
+                                mainMenu.getCarDealershipInstance().leaveTheCarDealership(carIndex);
+                                System.out.println(mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " left the car dealership");
+                                inputCarDealershipOperation();
+                            }
+                            else {
+                                System.out.println("Such car does not exist on the parking!");
+                                openLeaveCarFromTheCarDealershipMenu();
+                            }
+                        }
+                        else {
+                            System.out.println("You have to input correct number.");
+                            openLeaveCarFromTheCarDealershipMenu();
+                        }
+                        break;
                 }
             }
             catch(Exception e) {

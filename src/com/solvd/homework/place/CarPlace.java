@@ -1,9 +1,9 @@
 package com.solvd.homework.place;
 
-import com.solvd.homework.vehicle.interfaces.Car;
+import com.solvd.homework.vehicle.Vehicle;
 
-public interface CarPlace {
-    void add(Car car);
-    Car leaveThePlace(Car car);
+public interface CarPlace<T extends Vehicle> {
+    void add(T car);
+    T leaveThePlace(T car);
     void showInfo();
 }

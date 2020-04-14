@@ -18,10 +18,20 @@ public class Homes {
         this.homes = homes;
     }
 
+    /**
+     * create home by address and garage and add to map
+     * @param address key of the homes map
+     * @param garage value of the homes map
+     */
     public void addHome(Address address, Garage garage) {
         homes.put(address, garage);
     }
 
+    /**
+     * Delete home from the map by address
+     * @param address of the home which have to delete from the map
+     * @return garage of deleted home or null if there weren't any homes in the map with this addres
+     */
     public Garage deleteHome(Address address) {
         if (homes.get(address) == null) {
             System.out.println("Car with this index does not exist!");
@@ -31,6 +41,10 @@ public class Homes {
         return homes.remove(address);
     }
 
+    /**
+     * Delete home from the map by index
+     * @param index -> index of home which have to delete from the map
+     */
     public void deleteHome(int index) {
         if (homes.size() == 0) {
             System.out.println("There is not any homes");
@@ -54,6 +68,9 @@ public class Homes {
         }
     }
 
+    /**
+     * Show all homes on the screen
+     */
     public void showInfo() {
         System.out.println("Homes {");
         int i = 0;
