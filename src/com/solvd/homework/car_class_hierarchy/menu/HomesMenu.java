@@ -109,7 +109,7 @@ public class HomesMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
@@ -153,7 +153,7 @@ public class HomesMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
@@ -197,7 +197,7 @@ public class HomesMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }

@@ -71,7 +71,7 @@ public class GarageMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }

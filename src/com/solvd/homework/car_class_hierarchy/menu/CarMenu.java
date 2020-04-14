@@ -69,7 +69,7 @@ public class CarMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
@@ -121,7 +121,7 @@ public class CarMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
@@ -224,7 +224,7 @@ public class CarMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("Input correct value!");
+                e.printStackTrace();
             }
         }
     }
@@ -327,7 +327,7 @@ public class CarMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("Input correct value!");
+                e.printStackTrace();
             }
         }
     }
@@ -430,7 +430,7 @@ public class CarMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("Input correct value!");
+                e.printStackTrace();
             }
         }
     }
@@ -533,7 +533,7 @@ public class CarMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("Input correct value!");
+                e.printStackTrace();
             }
         }
     }

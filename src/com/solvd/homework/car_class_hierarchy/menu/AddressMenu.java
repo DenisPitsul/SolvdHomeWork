@@ -136,7 +136,7 @@ public class AddressMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("Input correct value!");
+                e.printStackTrace();
             }
         }
     }

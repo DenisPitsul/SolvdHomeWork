@@ -53,7 +53,7 @@ public class ParkingMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
@@ -98,7 +98,7 @@ public class ParkingMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
@@ -143,7 +143,7 @@ public class ParkingMenu {
                 }
             }
             catch(Exception e) {
-                System.out.println("You have to input integer.");
+                e.printStackTrace();
             }
         }
     }
