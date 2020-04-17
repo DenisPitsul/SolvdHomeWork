@@ -5,6 +5,9 @@ import com.solvd.homework.vehicle.final_car.AudiA6;
 
 public interface CarCreator {
 
+    int WHEEL_RADIUS = 20;
+    String SALON = "Alcantara";
+
     /**
      * create Audi A6 instance
      * @param color -> parameter of the car
@@ -14,7 +17,7 @@ public interface CarCreator {
      * @return Audi A6 instance
      */
     default Vehicle createCar(String color, String number, int maxSpeed, int year) {
-        return new AudiA6(color, number, maxSpeed, year, 20, "Alcantara");
+        return new AudiA6(color, number, maxSpeed, year, WHEEL_RADIUS, SALON);
     }
 
 }

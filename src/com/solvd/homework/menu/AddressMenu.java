@@ -5,6 +5,9 @@ import com.solvd.homework.place.Address;
 import java.util.Scanner;
 
 public class AddressMenu {
+    private static final String ONLY_LETTERS_REGEX = "^([a-zA-Z]*)$";
+    private static final String ONLY_NUMBERS_REGEX = "^([1-9][0-9]*)$";
+
     private Scanner in;
     private HomesMenu homesMenu;
 
@@ -22,8 +25,17 @@ public class AddressMenu {
         Address.Builder address = new Address.Builder();
 
         String value = "";
-        int i = 0;
-        while(i < 6) {
+        /*
+         *  number of iteration in method
+         *  0 -> input city
+         *  1 -> input district
+         *  2 -> input village
+         *  3 -> input street
+         *  4 -> input house number
+         *  5 -> create address
+         */
+        int propertyNumber = 0;
+        while(propertyNumber < 6) {
             try {
                 in = new Scanner(System.in);
 
@@ -32,7 +44,7 @@ public class AddressMenu {
                 System.out.println("----------------------------------------|");
                 System.out.println("Create Address                          |");
                 System.out.println("----------------------------------------|");
-                if(i == 0) {
+                if(propertyNumber == 0) {
                     System.out.print("Input city: ");
                     value = in.nextLine();
                     switch (value) {
@@ -43,9 +55,9 @@ public class AddressMenu {
                             homesMenu.openCreateHomeMenu();
                             break;
                         default:
-                            if (!value.equals("") && value.matches("^([a-zA-Z]*)$")) {
+                            if (!value.equals("") && value.matches(ONLY_LETTERS_REGEX)) {
                                 address.setCity(value);
-                                i++;
+                                propertyNumber++;
                             }
                             else {
                                 System.out.println("You have to input city!");
@@ -53,7 +65,7 @@ public class AddressMenu {
                             break;
                     }
                 }
-                else if (i == 1) {
+                else if (propertyNumber == 1) {
                     System.out.print("Input district or 0 if it is city: ");
                     value = in.nextLine();
                     switch (value) {
@@ -64,12 +76,12 @@ public class AddressMenu {
                             homesMenu.openCreateHomeMenu();
                             break;
                         case "0":
-                            i++;
+                            propertyNumber++;
                             break;
                         default:
-                            if (!value.equals("") && value.matches("^([a-zA-Z]*)$")) {
+                            if (!value.equals("") && value.matches(ONLY_LETTERS_REGEX)) {
                                 address.setDistrict(value);
-                                i++;
+                                propertyNumber++;
                             }
                             else {
                                 System.out.println("You have to input district!");
@@ -77,7 +89,7 @@ public class AddressMenu {
                             break;
                     }
                 }
-                else if (i == 2) {
+                else if (propertyNumber == 2) {
                     System.out.print("Input village or 0 if it is city: ");
                     value = in.nextLine();
                     switch (value) {
@@ -88,12 +100,12 @@ public class AddressMenu {
                             homesMenu.openCreateHomeMenu();
                             break;
                         case "0":
-                            i++;
+                            propertyNumber++;
                             break;
                         default:
-                            if (!value.equals("") && value.matches("^([a-zA-Z]*)$")) {
+                            if (!value.equals("") && value.matches(ONLY_LETTERS_REGEX)) {
                                 address.setVillage(value);
-                                i++;
+                                propertyNumber++;
                             }
                             else {
                                 System.out.println("You have to input village!");
@@ -101,7 +113,7 @@ public class AddressMenu {
                             break;
                     }
                 }
-                else if (i == 3) {
+                else if (propertyNumber == 3) {
                     System.out.print("Input street: ");
                     value = in.nextLine();
                     switch (value) {
@@ -112,9 +124,9 @@ public class AddressMenu {
                             homesMenu.openCreateHomeMenu();
                             break;
                         default:
-                            if (!value.equals("") && value.matches("^([a-zA-Z]*)$")) {
+                            if (!value.equals("") && value.matches(ONLY_LETTERS_REGEX)) {
                                 address.setStreet(value);
-                                i++;
+                                propertyNumber++;
                             }
                             else {
                                 System.out.println("You have to input street!");
@@ -122,7 +134,7 @@ public class AddressMenu {
                             break;
                     }
                 }
-                else if (i == 4) {
+                else if (propertyNumber == 4) {
                     System.out.print("Input house number: ");
                     value = in.nextLine();
                     switch (value) {
@@ -133,9 +145,9 @@ public class AddressMenu {
                             homesMenu.openCreateHomeMenu();
                             break;
                         default:
-                            if (!value.equals("") && value.matches("^([1-9][0-9]*)$")) {
+                            if (!value.equals("") && value.matches(ONLY_NUMBERS_REGEX)) {
                                 address.setHouseNumber(Integer.parseInt(value));
-                                i++;
+                                propertyNumber++;
                             }
                             else {
                                 System.out.println("You have to input house number!");
@@ -147,7 +159,7 @@ public class AddressMenu {
                     System.out.println("Address created!");
                     homesMenu.setAddress(address.build());
                     homesMenu.openGarageMenu();
-                    i++;
+                    propertyNumber++;
                 }
             }
             catch(Exception e) {

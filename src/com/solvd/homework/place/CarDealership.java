@@ -72,7 +72,7 @@ public class CarDealership<T extends Vehicle> implements CarPlace<T> {
         System.out.println("Car dealership {");
         int i = 0;
         for (T car : sellingCars) {
-            System.out.println("\tCar №" + i + ": " + car.getShortInfo());
+            System.out.println("\tCar #" + i + ": " + car.getShortInfo());
             i++;
         }
         System.out.println("}");

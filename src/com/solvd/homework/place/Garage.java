@@ -72,7 +72,7 @@ public class Garage<T extends Vehicle> implements CarPlace<T> {
         sb.append("\t\tGarage {\n");
         int i = 0;
         for (T car : carsInGarage) {
-            sb.append("\t\t\tCar №").append(i).append(": ").append(car.getShortInfo()).append("\n");
+            sb.append("\t\t\tCar #").append(i).append(": ").append(car.getShortInfo()).append("\n");
             i++;
         }
         sb.append("\t\t}");

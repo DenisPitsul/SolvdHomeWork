@@ -5,6 +5,8 @@ import com.solvd.homework.vehicle.final_car.ToyotaLandCruiser;
 
 public class ToyotaLandCruiserCreator implements CarCreator {
 
+    private static final int CLEARANCE_LENGTH = 50;
+
     /**
      * create Toyota Land Cruiser instance
      * @param color -> parameter of the car
@@ -15,7 +17,7 @@ public class ToyotaLandCruiserCreator implements CarCreator {
      */
     @Override
     public Vehicle createCar(String color, String number, int maxSpeed, int year) {
-        return new ToyotaLandCruiser(color, number, maxSpeed, year, 50);
+        return new ToyotaLandCruiser(color, number, maxSpeed, year, CLEARANCE_LENGTH);
     }
 
 }

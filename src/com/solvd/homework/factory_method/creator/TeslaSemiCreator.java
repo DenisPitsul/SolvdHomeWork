@@ -5,6 +5,9 @@ import com.solvd.homework.vehicle.final_car.TeslaSemi;
 
 public class TeslaSemiCreator implements CarCreator {
 
+    private static final int LIFTING_CAPACITY = 20;
+    private static final int BATTERY_POWER_RESERVE = 800;
+
     /**
      * create Tesla Semi instance
      * @param color -> parameter of the car
@@ -15,7 +18,7 @@ public class TeslaSemiCreator implements CarCreator {
      */
     @Override
     public Vehicle createCar(String color, String number, int maxSpeed, int year) {
-        return new TeslaSemi(color, number, maxSpeed, year, 20, 800);
+        return new TeslaSemi(color, number, maxSpeed, year, LIFTING_CAPACITY, BATTERY_POWER_RESERVE);
     }
 
 }

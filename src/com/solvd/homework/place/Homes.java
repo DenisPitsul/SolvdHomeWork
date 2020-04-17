@@ -75,7 +75,7 @@ public class Homes {
         System.out.println("Homes {");
         int i = 0;
         for (Address address : homes.keySet()) {
-            System.out.println("\t Home №"+ i);
+            System.out.println("\t Home #"+ i);
             System.out.println("\t\tAddress: " + address);
             System.out.println(homes.get(address));
             i++;

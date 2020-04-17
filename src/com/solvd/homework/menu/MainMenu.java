@@ -126,7 +126,7 @@ public class MainMenu {
         sb.append("All cars {\n");
         int i = 0;
         for (Vehicle car : carList) {
-            sb.append("\tCar №").append(i).append(": ").append(car.getShortInfo()).append("\n");
+            sb.append("\tCar #").append(i).append(": ").append(car.getShortInfo()).append("\n");
             i++;
         }
         sb.append('}');

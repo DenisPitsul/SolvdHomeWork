@@ -71,7 +71,7 @@ public class Parking<T extends Vehicle> implements CarPlace<T> {
     public void showInfo() {
         System.out.println("Parking {");
         for (int i = 0; i < parkingCars.size(); i++) {
-            System.out.println("\tPlace №" + i + ": " + parkingCars.get(i).getShortInfo());
+            System.out.println("\tPlace #" + i + ": " + parkingCars.get(i).getShortInfo());
         }
         System.out.println("}");
     }

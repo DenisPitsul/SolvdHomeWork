@@ -5,6 +5,8 @@ import com.solvd.homework.vehicle.final_car.MercedesVito;
 
 public class MercedesVitoCreator implements CarCreator {
 
+    private static final int PASSENGER_SEATS_COUNT = 7;
+
     /**
      * create Mercedes Vito instance
      * @param color -> parameter of the car
@@ -15,7 +17,7 @@ public class MercedesVitoCreator implements CarCreator {
      */
     @Override
     public Vehicle createCar(String color, String number, int maxSpeed, int year) {
-        return new MercedesVito(color, number, maxSpeed, year, 7);
+        return new MercedesVito(color, number, maxSpeed, year, PASSENGER_SEATS_COUNT);
     }
 
 }
