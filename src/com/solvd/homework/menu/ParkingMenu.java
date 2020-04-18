@@ -1,5 +1,9 @@
 package com.solvd.homework.menu;
 
+import com.solvd.homework.exception.TruckOnParkingException;
+import com.solvd.homework.vehicle.Truck;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ParkingMenu {
@@ -55,9 +59,10 @@ public class ParkingMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                inputParkingOperation();
             }
         }
     }
@@ -88,12 +93,18 @@ public class ParkingMenu {
                         inputParkingOperation();
                         break;
                     default:
-                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                        if (!inputIndex.equals("")) {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
-                                mainMenu.getParkingInstance().add(mainMenu.getCarListInstance().get(carIndex));
-                                System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " has parked");
-                                inputParkingOperation();
+                                if (mainMenu.getCarListInstance().get(carIndex) instanceof Truck) {
+                                    throw new TruckOnParkingException();
+                                }
+                                else {
+                                    mainMenu.getParkingInstance().add(mainMenu.getCarListInstance().get(carIndex));
+                                    System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " has parked");
+                                    inputParkingOperation();
+                                }
+
                             }
                             else {
                                 System.out.println("Such car does not exist!");
@@ -107,9 +118,12 @@ public class ParkingMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } catch (TruckOnParkingException e) {
+                System.out.println(e.getMessage());;
+            } finally {
+                inputParkingOperation();
             }
         }
     }
@@ -140,7 +154,7 @@ public class ParkingMenu {
                         inputParkingOperation();
                         break;
                     default:
-                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                        if (!inputIndex.equals("")) {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
                                 mainMenu.getParkingInstance().leaveTheParking(carIndex);
@@ -158,9 +172,10 @@ public class ParkingMenu {
                         }
                         break;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                openLeaveTheParkingMenu();
             }
         }
     }

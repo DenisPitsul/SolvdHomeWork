@@ -1,5 +1,6 @@
 package com.solvd.homework.menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CarDealershipMenu {
@@ -55,9 +56,10 @@ public class CarDealershipMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number");
+            } finally {
+                inputCarDealershipOperation();
             }
         }
     }
@@ -88,7 +90,7 @@ public class CarDealershipMenu {
                         inputCarDealershipOperation();
                         break;
                     default:
-                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                        if (!inputIndex.equals("")) {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
                                 mainMenu.getCarDealershipInstance().add(mainMenu.getCarListInstance().get(carIndex));
@@ -107,9 +109,10 @@ public class CarDealershipMenu {
                         }
                         break;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                openAddCarDealershipMenu();
             }
         }
     }
@@ -158,9 +161,10 @@ public class CarDealershipMenu {
                         }
                         break;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number");
+            } finally {
+                openLeaveCarFromTheCarDealershipMenu();
             }
         }
     }

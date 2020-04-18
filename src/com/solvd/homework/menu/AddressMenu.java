@@ -2,6 +2,7 @@ package com.solvd.homework.menu;
 
 import com.solvd.homework.place.Address;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AddressMenu {
@@ -21,7 +22,7 @@ public class AddressMenu {
      *  And in addition we can specify district and village if it is not city
      *  else we can specify 0 to miss entering these fields
      */
-    public void inputAddressManually() {
+    public void inputAddressManually(int propertyNumberParameter) {
         Address.Builder address = new Address.Builder();
 
         String value = "";
@@ -34,7 +35,7 @@ public class AddressMenu {
          *  4 -> input house number
          *  5 -> create address
          */
-        int propertyNumber = 0;
+        int propertyNumber = propertyNumberParameter;
         while(propertyNumber < 6) {
             try {
                 in = new Scanner(System.in);
@@ -60,7 +61,7 @@ public class AddressMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input city!");
+                                System.out.println("You have to input city. City can contains only letters");
                             }
                             break;
                     }
@@ -84,7 +85,7 @@ public class AddressMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input district!");
+                                System.out.println("You have to input district. District can contains only letters");
                             }
                             break;
                     }
@@ -108,7 +109,7 @@ public class AddressMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input village!");
+                                System.out.println("You have to input village. Village can contains only letters");
                             }
                             break;
                     }
@@ -129,7 +130,7 @@ public class AddressMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input street!");
+                                System.out.println("You have to input street. Street can contains only letters");
                             }
                             break;
                     }
@@ -150,7 +151,7 @@ public class AddressMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input house number!");
+                                System.out.println("You have to input house number. House number can contains only numbers");
                             }
                             break;
                     }
@@ -161,9 +162,10 @@ public class AddressMenu {
                     homesMenu.openGarageMenu();
                     propertyNumber++;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct value");
+            } finally {
+                inputAddressManually(propertyNumber);
             }
         }
     }

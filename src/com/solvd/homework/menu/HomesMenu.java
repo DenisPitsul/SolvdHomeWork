@@ -3,6 +3,7 @@ package com.solvd.homework.menu;
 import com.solvd.homework.place.Address;
 import com.solvd.homework.place.Garage;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class HomesMenu {
@@ -122,9 +123,10 @@ public class HomesMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                inputHomesOperation();
             }
         }
     }
@@ -175,9 +177,10 @@ public class HomesMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                openCreateHomeMenu();
             }
         }
     }
@@ -208,7 +211,7 @@ public class HomesMenu {
                         inputHomesOperation();
                         break;
                     default:
-                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
+                        if (!inputIndex.equals("")) {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getHomesInstance().getHomes().size()) {
                                 mainMenu.getHomesInstance().deleteHome(carIndex);
@@ -226,9 +229,10 @@ public class HomesMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                openDeleteHomeMenu();
             }
         }
     }
@@ -238,7 +242,7 @@ public class HomesMenu {
      */
     public void openAddressMenu() {
         AddressMenu addressMenu = getAddressMenuInstance();
-        addressMenu.inputAddressManually();
+        addressMenu.inputAddressManually(0);
     }
 
     /**

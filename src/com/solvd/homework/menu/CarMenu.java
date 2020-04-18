@@ -8,6 +8,7 @@ import com.solvd.homework.vehicle.final_car.TeslaSemi;
 import com.solvd.homework.vehicle.final_car.ToyotaLandCruiser;
 import com.solvd.homework.vehicle.helper.CarModel;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CarMenu {
@@ -81,9 +82,10 @@ public class CarMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number");
+            } finally {
+                inputCarType();
             }
         }
     }
@@ -134,9 +136,10 @@ public class CarMenu {
                         chooseCreateType(carModel);
                         break;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number");
+            } finally {
+                chooseCreateType(carModel);
             }
         }
     }
@@ -184,7 +187,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input color!");
+                                System.out.println("You have to input color. Color can contains only letters");
                             }
                             break;
                     }
@@ -206,7 +209,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input car number!");
+                                System.out.println("You have to input car number. Car number can contains only letters and numbers");
                             }
                             break;
                     }
@@ -228,7 +231,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input max speed!");
+                                System.out.println("You have to input max speed. Max speed can contains only numbers");
                             }
                             break;
                     }
@@ -250,7 +253,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input year of car!");
+                                System.out.println("You have to input year of car. Year of car can contains only numbers");
                             }
                             break;
                     }
@@ -261,9 +264,10 @@ public class CarMenu {
                     mainMenu.openMainMenu();
                     propertyNumber++;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct value");
+            } finally {
+                createAudiA6Form();
             }
         }
     }
@@ -311,7 +315,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input color!");
+                                System.out.println("You have to input color. Color can contains only letters");
                             }
                             break;
                     }
@@ -333,7 +337,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input car number!");
+                                System.out.println("You have to input car number. Car number can contains only letters and numbers");
                             }
                             break;
                     }
@@ -355,7 +359,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input max speed!");
+                                System.out.println("You have to input max speed. Max speed can contains only numbers");
                             }
                             break;
                     }
@@ -377,7 +381,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input year of car!");
+                                System.out.println("You have to input year of car. Year of car can contains only numbers");
                             }
                             break;
                     }
@@ -388,9 +392,10 @@ public class CarMenu {
                     mainMenu.openMainMenu();
                     propertyNumber++;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct value");
+            } finally {
+                createMercedesVitoForm();
             }
         }
     }
@@ -438,7 +443,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input color!");
+                                System.out.println("You have to input color. Color can contains only letters");
                             }
                             break;
                     }
@@ -460,7 +465,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input car number!");
+                                System.out.println("You have to input car number. Car number can contains only letters and numbers");
                             }
                             break;
                     }
@@ -482,7 +487,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input max speed!");
+                                System.out.println("You have to input max speed. Max speed can contains only numbers");
                             }
                             break;
                     }
@@ -504,7 +509,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input year of car!");
+                                System.out.println("You have to input year of car. Year of car can contains only numbers");
                             }
                             break;
                     }
@@ -515,9 +520,10 @@ public class CarMenu {
                     mainMenu.openMainMenu();
                     propertyNumber++;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct value");
+            } finally {
+                createToyotaLandCruiserForm();
             }
         }
     }
@@ -565,7 +571,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input color!");
+                                System.out.println("You have to input color. Color can contains only letters");
                             }
                             break;
                     }
@@ -587,7 +593,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input car number!");
+                                System.out.println("You have to input car number. Car number can contains only letters and numbers");
                             }
                             break;
                     }
@@ -609,7 +615,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input max speed!");
+                                System.out.println("You have to input max speed. Max speed can contains only numbers");
                             }
                             break;
                     }
@@ -631,7 +637,7 @@ public class CarMenu {
                                 propertyNumber++;
                             }
                             else {
-                                System.out.println("You have to input year of car!");
+                                System.out.println("You have to input year of car. Year of car can contains only numbers");
                             }
                             break;
                     }
@@ -642,9 +648,10 @@ public class CarMenu {
                     mainMenu.openMainMenu();
                     propertyNumber++;
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct value");
+            } finally {
+                createTeslaSemiForm();
             }
         }
     }

@@ -7,9 +7,13 @@ import java.util.Set;
 
 public class Garage<T extends Vehicle> implements CarPlace<T> {
     private Set<T> carsInGarage;
+    private boolean isBig;
+
+    private boolean isBigGarageValueSetted = false;
 
     public Garage() {
         carsInGarage = new HashSet<>();
+        isBig = false;
     }
 
     public Set<T> getCarsInGarage() {
@@ -18,6 +22,25 @@ public class Garage<T extends Vehicle> implements CarPlace<T> {
 
     public void setCarsInGarage(Set<T> carsInGarage) {
         this.carsInGarage = carsInGarage;
+    }
+
+    public boolean isBig() {
+        return isBig;
+    }
+
+    /**
+     * if isBig value already setted you can not set it again
+     * @param isBig -> if garage big isBig = true else if garage small isBig = false
+     */
+    public void setBig(boolean isBig) {
+        if (!isBigGarageValueSetted) {
+            this.isBig = isBig;
+            isBigGarageValueSetted = true;
+        }
+    }
+
+    public boolean isBigGarageValueSetted() {
+        return isBigGarageValueSetted;
     }
 
     /**
@@ -58,6 +81,7 @@ public class Garage<T extends Vehicle> implements CarPlace<T> {
     @Override
     public void showInfo() {
         System.out.println("Garage {");
+        System.out.println("\tGarage is " + (isBig ? "big" : "small"));
         int i = 0;
         for (T car : carsInGarage) {
             System.out.println("\tCar №" + i + ": " + car.getShortInfo());
@@ -70,6 +94,7 @@ public class Garage<T extends Vehicle> implements CarPlace<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\t\tGarage {\n");
+        sb.append("\t\t\tGarage is ").append(isBig ? "big" : "small").append("\n");
         int i = 0;
         for (T car : carsInGarage) {
             sb.append("\t\t\tCar #").append(i).append(": ").append(car.getShortInfo()).append("\n");

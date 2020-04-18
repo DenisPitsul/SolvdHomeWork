@@ -1,5 +1,9 @@
 package com.solvd.homework.menu;
 
+import com.solvd.homework.exception.TruckInGarageException;
+import com.solvd.homework.vehicle.Truck;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GarageMenu {
@@ -71,12 +75,12 @@ public class GarageMenu {
                         System.out.println("You have to input number from menu.");
                         inputGarageOperation();
                         break;
-
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number");
+            } finally {
+                inputGarageOperation();
             }
         }
     }
@@ -86,50 +90,102 @@ public class GarageMenu {
      */
     private void openAddCarToGarageMenu() {
         inputIndex = "";
+        /*
+         *  number of iteration in method
+         *  0 -> input isBig garage
+         *  1 -> add cars to garage
+         */
+        int propertyNumber = 0;
         while(true) {
             try {
                 in = new Scanner(System.in);
 
-                System.out.println("Finish program input               -> -1|");
-                System.out.println("Go back input                      -> -2|");
-                System.out.println("----------------------------------------|");
-                System.out.println("Input number of car to add to garage    |");
-                System.out.println("----------------------------------------|");
-                homesMenu.getMainMenu().showAllCars();
+                if (homesMenu.getGarage().isBigGarageValueSetted()) {
+                    propertyNumber = 1;
+                }
 
-                inputIndex = in.nextLine();
+                if(propertyNumber == 0) {
+                    System.out.println("Finish program input                       -> -1|");
+                    System.out.println("Go back input                              -> -2|");
+                    System.out.println("------------------------------------------------|");
+                    System.out.println("Create big garage input                        ->  1|");
+                    System.out.println("Create small garage input                      ->  2|");
 
-                switch (inputIndex) {
-                    case "-1":
-                        System.exit(0);
-                        break;
-                    case "-2":
-                        inputGarageOperation();
-                        break;
-                    default:
-                        if (!inputIndex.equals("") && inputIndex.matches("^([1-9][0-9]*|[0])$")) {
-                            int carIndex = Integer.parseInt(inputIndex);
-                            if (carIndex >= 0 && carIndex < homesMenu.getMainMenu().getCarListInstance().size()) {
-                                homesMenu.getGarage().add(homesMenu.getMainMenu().getCarListInstance().get(carIndex));
-                                isCarInTheGarage = true;
-                                System.out.println("Car " + homesMenu.getMainMenu().getCarListInstance().get(carIndex).getShortInfo()
-                                        + " added to garage");
-                                inputGarageOperation();
+                    inputIndex = in.nextLine();
+
+                    switch (inputIndex) {
+                        case "-1":
+                            System.exit(0);
+                            break;
+                        case "-2":
+                            inputGarageOperation();
+                            break;
+                        case "1":
+                            homesMenu.getGarage().setBig(true);
+                            propertyNumber++;
+                            break;
+                        case "2":
+                            homesMenu.getGarage().setBig(false);
+                            propertyNumber++;
+                            break;
+                        default:
+                            System.out.println("You have to input number from menu.");
+                            openAddCarToGarageMenu();
+                            break;
+                    }
+                    break;
+                }
+                else {
+                    System.out.println("Finish program input               -> -1|");
+                    System.out.println("Go back input                      -> -2|");
+                    System.out.println("----------------------------------------|");
+                    System.out.println("Input number of car to add to garage    |");
+                    System.out.println("----------------------------------------|");
+                    homesMenu.getMainMenu().showAllCars();
+
+                    inputIndex = in.nextLine();
+
+                    switch (inputIndex) {
+                        case "-1":
+                            System.exit(0);
+                            break;
+                        case "-2":
+                            inputGarageOperation();
+                            break;
+                        default:
+                            if (!inputIndex.equals("")) {
+                                int carIndex = Integer.parseInt(inputIndex);
+                                if (carIndex >= 0 && carIndex < homesMenu.getMainMenu().getCarListInstance().size()) {
+                                    if (homesMenu.getMainMenu().getCarListInstance().get(carIndex) instanceof Truck
+                                            && !homesMenu.getGarage().isBig()) {
+                                        throw new TruckInGarageException();
+                                    }
+                                    else {
+                                        homesMenu.getGarage().add(homesMenu.getMainMenu().getCarListInstance().get(carIndex));
+                                        isCarInTheGarage = true;
+                                        System.out.println("Car " + homesMenu.getMainMenu().getCarListInstance().get(carIndex).getShortInfo()
+                                                + " added to garage");
+                                        inputGarageOperation();
+                                    }
+                                }
+                                else {
+                                    System.out.println("Such car does not exist!");
+                                    openAddCarToGarageMenu();
+                                }
                             }
                             else {
-                                System.out.println("Such car does not exist!");
+                                System.out.println("You have to input correct number.");
                                 openAddCarToGarageMenu();
                             }
-                        }
-                        else {
-                            System.out.println("You have to input correct number.");
-                            openAddCarToGarageMenu();
-                        }
-                        break;
+                            break;
+                    }
                 }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } catch (TruckInGarageException e) {
+                System.out.println(e.getMessage());
+            } finally {
+                openAddCarToGarageMenu();
             }
         }
     }

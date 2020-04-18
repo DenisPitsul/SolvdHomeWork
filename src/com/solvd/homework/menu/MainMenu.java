@@ -4,6 +4,7 @@ package com.solvd.homework.menu;
 import com.solvd.homework.place.*;
 import com.solvd.homework.vehicle.Vehicle;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -213,9 +214,10 @@ public class MainMenu {
                         break;
                 }
                 break;
-            }
-            catch(Exception e) {
-                e.printStackTrace();
+            } catch(InputMismatchException | NumberFormatException e) {
+                System.out.println("You have to input correct number.");
+            } finally {
+                openMainMenu();
             }
         }
     }
