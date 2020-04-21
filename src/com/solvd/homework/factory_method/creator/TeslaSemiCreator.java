@@ -4,9 +4,8 @@ import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.TeslaSemi;
 
 public class TeslaSemiCreator implements CarCreator {
-
-    private static final int LIFTING_CAPACITY = 20;
-    private static final int BATTERY_POWER_RESERVE = 800;
+    private static final int LIFTING_CAPACITY = 21;
+    private static final int BATTERY_POWER_RESERVE = 810;
 
     /**
      * create Tesla Semi instance

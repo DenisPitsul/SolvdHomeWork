@@ -4,8 +4,7 @@ import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.MercedesVito;
 
 public class MercedesVitoCreator implements CarCreator {
-
-    private static final int PASSENGER_SEATS_COUNT = 7;
+    private static final int PASSENGER_SEATS_COUNT = 8;
 
     /**
      * create Mercedes Vito instance

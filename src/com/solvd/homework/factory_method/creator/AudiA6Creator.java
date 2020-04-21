@@ -4,8 +4,7 @@ import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.AudiA6;
 
 public class AudiA6Creator implements CarCreator {
-
-    private static final int WHEEL_RADIUS = 19;
+    private static final int WHEEL_RADIUS = 20;
 
     /**
      * create Audi A6 instance

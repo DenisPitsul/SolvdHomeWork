@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Homes {
+    private static int countOfCreatedHomes;
+
     private Map<Address, Garage> homes;
 
     public Homes() {
@@ -18,6 +20,10 @@ public class Homes {
         this.homes = homes;
     }
 
+    public static int getCountOfCreatedHomes() {
+        return countOfCreatedHomes;
+    }
+
     /**
      * create home by address and garage and add to map
      * @param address key of the homes map
@@ -25,6 +31,7 @@ public class Homes {
      */
     public void addHome(Address address, Garage garage) {
         homes.put(address, garage);
+        countOfCreatedHomes++;
     }
 
     /**
@@ -38,6 +45,7 @@ public class Homes {
             return null;
         }
         System.out.println("Removed home from this address: " + address);
+        countOfCreatedHomes--;
         return homes.remove(address);
     }
 
@@ -56,6 +64,7 @@ public class Homes {
             for (Address address : homes.keySet()) {
                 if (i == index) {
                     homes.remove(address);
+                    countOfCreatedHomes--;
                     isHomeRemoved = true;
                     System.out.println("Removed home from this address: " + address);
                     break;
@@ -73,6 +82,7 @@ public class Homes {
      */
     public void showInfo() {
         System.out.println("Homes {");
+        System.out.println("\tCount of created homes: " + countOfCreatedHomes);
         int i = 0;
         for (Address address : homes.keySet()) {
             System.out.println("\t Home #"+ i);

@@ -4,8 +4,7 @@ import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.ToyotaLandCruiser;
 
 public class ToyotaLandCruiserCreator implements CarCreator {
-
-    private static final int CLEARANCE_LENGTH = 50;
+    private static final int CLEARANCE_LENGTH = 55;
 
     /**
      * create Toyota Land Cruiser instance

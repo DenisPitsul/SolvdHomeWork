@@ -4,8 +4,7 @@ import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.AudiA6;
 
 public interface CarCreator {
-
-    int WHEEL_RADIUS = 20;
+    int WHEEL_RADIUS = 21;
     String SALON = "Alcantara";
 
     /**

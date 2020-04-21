@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Parking<T extends Vehicle> implements CarPlace<T> {
+    private static int countOfParkedCars;
+
     private List<T> parkingCars;
 
     public Parking() {
@@ -20,6 +22,11 @@ public class Parking<T extends Vehicle> implements CarPlace<T> {
         this.parkingCars = parkingCars;
     }
 
+
+    public static int getCountOfParkedCars() {
+        return countOfParkedCars;
+    }
+
     /**
      * add car to garage
      * @param car -> will added to this parking
@@ -27,6 +34,7 @@ public class Parking<T extends Vehicle> implements CarPlace<T> {
     @Override
     public void add(T car) {
         parkingCars.add(car);
+        countOfParkedCars++;
     }
 
     /**
@@ -49,6 +57,7 @@ public class Parking<T extends Vehicle> implements CarPlace<T> {
             return null;
         }
         parkingCars.remove(car);
+        countOfParkedCars--;
         return car;
     }
 
@@ -61,6 +70,7 @@ public class Parking<T extends Vehicle> implements CarPlace<T> {
         if (parkingCars.get(carPlaceIndex) == null) {
             return null;
         }
+        countOfParkedCars--;
         return parkingCars.remove(carPlaceIndex);
     }
 
@@ -70,6 +80,7 @@ public class Parking<T extends Vehicle> implements CarPlace<T> {
     @Override
     public void showInfo() {
         System.out.println("Parking {");
+        System.out.println("\tCount of parked cars: " + countOfParkedCars);
         for (int i = 0; i < parkingCars.size(); i++) {
             System.out.println("\tPlace #" + i + ": " + parkingCars.get(i).getShortInfo());
         }

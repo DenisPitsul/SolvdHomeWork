@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarDealership<T extends Vehicle> implements CarPlace<T> {
+    private static int countOfCarsInCarDealership;
+
     private List<T> sellingCars;
 
     public CarDealership() {
@@ -20,6 +22,10 @@ public class CarDealership<T extends Vehicle> implements CarPlace<T> {
         this.sellingCars = sellingCars;
     }
 
+    public static int getCountOfCarsInCarDealership() {
+        return countOfCarsInCarDealership;
+    }
+
     /**
      * add car to car dealership
      * @param car -> will added to this car dealership
@@ -27,6 +33,7 @@ public class CarDealership<T extends Vehicle> implements CarPlace<T> {
     @Override
     public void add(T car) {
         sellingCars.add(car);
+        countOfCarsInCarDealership++;
     }
 
     /**
@@ -49,6 +56,7 @@ public class CarDealership<T extends Vehicle> implements CarPlace<T> {
             return null;
         }
         sellingCars.remove(car);
+        countOfCarsInCarDealership--;
         return car;
     }
 
@@ -61,6 +69,7 @@ public class CarDealership<T extends Vehicle> implements CarPlace<T> {
         if (sellingCars.get(carPlaceIndex) == null) {
             return null;
         }
+        countOfCarsInCarDealership--;
         return sellingCars.remove(carPlaceIndex);
     }
 
@@ -72,6 +81,7 @@ public class CarDealership<T extends Vehicle> implements CarPlace<T> {
         System.out.println("Car dealership {");
         int i = 0;
         for (T car : sellingCars) {
+            System.out.println("\tCount of cars in car dealership: " + countOfCarsInCarDealership);
             System.out.println("\tCar #" + i + ": " + car.getShortInfo());
             i++;
         }
