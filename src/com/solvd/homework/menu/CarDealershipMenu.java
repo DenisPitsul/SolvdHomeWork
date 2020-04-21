@@ -1,5 +1,7 @@
 package com.solvd.homework.menu;
 
+import com.solvd.homework.vehicle.Vehicle;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -93,8 +95,9 @@ public class CarDealershipMenu {
                         if (!inputIndex.equals("")) {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
-                                mainMenu.getCarDealershipInstance().add(mainMenu.getCarListInstance().get(carIndex));
-                                System.out.println(mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " added to car dealership");
+                                Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
+                                mainMenu.getCarDealershipInstance().add(vehicle);
+                                System.out.println(vehicle.getShortInfo() + " added to car dealership");
                                 inputCarDealershipOperation();
                             }
                             else {
@@ -147,7 +150,8 @@ public class CarDealershipMenu {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
                                 mainMenu.getCarDealershipInstance().leaveTheCarDealership(carIndex);
-                                System.out.println(mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " left the car dealership");
+                                Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
+                                System.out.println(vehicle.getShortInfo() + " left the car dealership");
                                 inputCarDealershipOperation();
                             }
                             else {

@@ -2,6 +2,7 @@ package com.solvd.homework.menu;
 
 import com.solvd.homework.exception.TruckInGarageException;
 import com.solvd.homework.vehicle.Truck;
+import com.solvd.homework.vehicle.Vehicle;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -86,7 +87,8 @@ public class GarageMenu {
     }
 
     /**
-     * Show all cars on the screen and choose number of car to add to the garage
+     * Input 1 to create big garage or 2 to create small garage.
+     * After that show all cars on the screen and choose number of car to add to the garage
      */
     private void openAddCarToGarageMenu() {
         inputIndex = "";
@@ -156,15 +158,14 @@ public class GarageMenu {
                             if (!inputIndex.equals("")) {
                                 int carIndex = Integer.parseInt(inputIndex);
                                 if (carIndex >= 0 && carIndex < homesMenu.getMainMenu().getCarListInstance().size()) {
-                                    if (homesMenu.getMainMenu().getCarListInstance().get(carIndex) instanceof Truck
-                                            && !homesMenu.getGarage().isBig()) {
+                                    Vehicle vehicle = homesMenu.getMainMenu().getCarListInstance().get(carIndex);
+                                    if (vehicle instanceof Truck && !homesMenu.getGarage().isBig()) {
                                         throw new TruckInGarageException();
                                     }
                                     else {
-                                        homesMenu.getGarage().add(homesMenu.getMainMenu().getCarListInstance().get(carIndex));
+                                        homesMenu.getGarage().add(vehicle);
                                         isCarInTheGarage = true;
-                                        System.out.println("Car " + homesMenu.getMainMenu().getCarListInstance().get(carIndex).getShortInfo()
-                                                + " added to garage");
+                                        System.out.println("Car " + vehicle.getShortInfo() + " added to garage");
                                         inputGarageOperation();
                                     }
                                 }

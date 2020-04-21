@@ -2,6 +2,7 @@ package com.solvd.homework.menu;
 
 import com.solvd.homework.exception.TruckOnParkingException;
 import com.solvd.homework.vehicle.Truck;
+import com.solvd.homework.vehicle.Vehicle;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -96,12 +97,13 @@ public class ParkingMenu {
                         if (!inputIndex.equals("")) {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
-                                if (mainMenu.getCarListInstance().get(carIndex) instanceof Truck) {
+                                Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
+                                if (vehicle instanceof Truck) {
                                     throw new TruckOnParkingException();
                                 }
                                 else {
-                                    mainMenu.getParkingInstance().add(mainMenu.getCarListInstance().get(carIndex));
-                                    System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " has parked");
+                                    mainMenu.getParkingInstance().add(vehicle);
+                                    System.out.println("Car " + vehicle.getShortInfo() + " has parked");
                                     inputParkingOperation();
                                 }
 
@@ -158,7 +160,8 @@ public class ParkingMenu {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
                                 mainMenu.getParkingInstance().leaveTheParking(carIndex);
-                                System.out.println("Car " + mainMenu.getCarListInstance().get(carIndex).getShortInfo() + " left the parking");
+                                Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
+                                System.out.println("Car " + vehicle.getShortInfo() + " left the parking");
                                 inputParkingOperation();
                             }
                             else {
