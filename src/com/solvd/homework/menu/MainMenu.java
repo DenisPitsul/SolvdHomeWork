@@ -1,6 +1,10 @@
 package com.solvd.homework.menu;
 
 
+import com.solvd.homework.dao.AdminInfoDao;
+import com.solvd.homework.dao.CarDealershipDAO;
+import com.solvd.homework.dao.HomesDAO;
+import com.solvd.homework.dao.ParkingDAO;
 import com.solvd.homework.place.*;
 import com.solvd.homework.vehicle.Vehicle;
 
@@ -11,19 +15,32 @@ import java.util.Scanner;
 
 public class MainMenu {
     private List<Vehicle> carList;
-    private Parking parking;
-    private CarDealership carDealership;
+    private Parking<Vehicle> parking;
+    private CarDealership<Vehicle> carDealership;
     private Homes homes;
 
     private CarMenu carMenu;
     private ParkingMenu parkingMenu;
     private CarDealershipMenu carDealershipMenu;
     private HomesMenu homesMenu;
+    private AdminInfoMenu adminInfoMenu;
+
+    private ParkingDAO parkingDAO;
+    private CarDealershipDAO carDealershipDAO;
+    private HomesDAO homesDAO;
+    private AdminInfoDao adminInfoDao;
 
     private Scanner in;
     private String inputIndex;
 
     public MainMenu() {
+        parkingDAO = new ParkingDAO("files/parking.txt");
+        carDealershipDAO = new CarDealershipDAO("files/car_dealership.txt");
+        homesDAO = new HomesDAO("files/homes.txt");
+        adminInfoDao = new AdminInfoDao("files/admin_info.properties");
+        parking = parkingDAO.readAllFromFile();
+        carDealership = carDealershipDAO.readAllFromFile();
+        homes = homesDAO.readAllFromFile();
     }
 
     /**
@@ -71,6 +88,17 @@ public class MainMenu {
     }
 
     /**
+     * If we have not opened AdminInfoMenu instance yet then create and return
+     * @return homesMenu instance
+     */
+    private AdminInfoMenu getAdminInfoMenu() {
+        if (adminInfoMenu == null) {
+            adminInfoMenu = new AdminInfoMenu(this);
+        }
+        return adminInfoMenu;
+    }
+
+    /**
      * If we have not list of car instance yet then create and return
      * @return list of car instance
      */
@@ -85,9 +113,9 @@ public class MainMenu {
      * If we have not parking instance yet then create and return
      * @return parking instance
      */
-    public Parking getParkingInstance() {
+    public Parking<Vehicle> getParkingInstance() {
         if (parking == null) {
-            parking = new Parking();
+            parking = new Parking<>();
         }
         return parking;
     }
@@ -96,9 +124,9 @@ public class MainMenu {
      * If we have not car dealership instance yet then create and return
      * @return car dealership instance
      */
-    public CarDealership getCarDealershipInstance() {
+    public CarDealership<Vehicle> getCarDealershipInstance() {
         if (carDealership == null) {
-            carDealership = new CarDealership();
+            carDealership = new CarDealership<>();
         }
         return carDealership;
     }
@@ -112,6 +140,34 @@ public class MainMenu {
             homes = new Homes();
         }
         return homes;
+    }
+
+    /**
+     * @return parkingDAO instance
+     */
+    public ParkingDAO getParkingDAO() {
+        return parkingDAO;
+    }
+
+    /**
+     * @return carDealershipDAO instance
+     */
+    public CarDealershipDAO getCarDealershipDAO() {
+        return carDealershipDAO;
+    }
+
+    /**
+     * @return homesDAO instance
+     */
+    public HomesDAO getHomesDAO() {
+        return homesDAO;
+    }
+
+    /**
+     * @return adminInfoDAO instance
+     */
+    public AdminInfoDao getAdminInfoDAO() {
+        return adminInfoDao;
     }
 
     /**
@@ -189,6 +245,7 @@ public class MainMenu {
                 System.out.println("Parking menu input                 ->  2|");
                 System.out.println("Car dealership menu input          ->  3|");
                 System.out.println("Home menu input                    ->  4|");
+                System.out.println("Admin information menu input       ->  5|");
 
                 inputIndex = in.nextLine();
 
@@ -207,6 +264,9 @@ public class MainMenu {
                         break;
                     case "4":
                         openHomeMenu();
+                        break;
+                    case "5":
+                        openAdminInfoMenu();
                         break;
                     default:
                         System.out.println("You have to input number from menu.");
@@ -252,6 +312,14 @@ public class MainMenu {
     private void openHomeMenu() {
         HomesMenu homesMenu = getHomesMenuInstance();
         homesMenu.inputHomesOperation();
+    }
+
+    /**
+     * Go to admin info menu
+     */
+    private void openAdminInfoMenu() {
+        AdminInfoMenu adminInfoMenu = getAdminInfoMenu();
+        adminInfoMenu.inputAdminInfoOperation();
     }
 
 }

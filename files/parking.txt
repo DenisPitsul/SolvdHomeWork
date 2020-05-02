@@ -1,0 +1,1 @@
+MercedesVito,Diesel_2.2,white,CE2901AA,240,2012,true,true,8

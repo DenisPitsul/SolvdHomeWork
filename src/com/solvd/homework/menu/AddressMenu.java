@@ -77,7 +77,7 @@ public class AddressMenu {
                             homesMenu.openCreateHomeMenu();
                             break;
                         case "0":
-                            propertyNumber++;
+                            propertyNumber += 2;
                             break;
                         default:
                             if (!value.equals("") && value.matches(ONLY_LETTERS_REGEX)) {
@@ -91,7 +91,7 @@ public class AddressMenu {
                     }
                 }
                 else if (propertyNumber == 2) {
-                    System.out.print("Input village or 0 if it is city: ");
+                    System.out.print("Input village or 0 if it is district: ");
                     value = in.nextLine();
                     switch (value) {
                         case "-1":

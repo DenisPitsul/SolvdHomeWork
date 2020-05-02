@@ -118,13 +118,13 @@ public class CarMenu {
                         break;
                     case "1":
                         if (carModel == CarModel.AUDI_A6)
-                            createAudiA6Form();
+                            createAudiA6Form(0, new AudiA6());
                         else if (carModel == CarModel.MERCEDES_VITO)
-                            createMercedesVitoForm();
+                            createMercedesVitoForm(0, new MercedesVito());
                         else if (carModel == CarModel.TOYOTA_LAND_CRUISER)
-                            createToyotaLandCruiserForm();
+                            createToyotaLandCruiserForm(0, new ToyotaLandCruiser());
                         else if (carModel == CarModel.TESLA_SEMI)
-                            createTeslaSemiForm();
+                            createTeslaSemiForm(0, new TeslaSemi());
                         break;
                     case "2":
                         Vehicle car = FactoryMethodCar.createCar(carModel);
@@ -148,8 +148,8 @@ public class CarMenu {
      *  Create Audi A6 manually
      *  Input color of car, car number, max speed and year of the car
      */
-    private void createAudiA6Form() {
-        AudiA6 audiA6 = new AudiA6();
+    private void createAudiA6Form(int propertyNumberParameter, AudiA6 audiA6Car) {
+        AudiA6 audiA6 = audiA6Car;
 
         String value = "";
         /*
@@ -160,7 +160,7 @@ public class CarMenu {
          *  3 -> input year of car
          *  4 -> create car
          */
-        int propertyNumber = 0;
+        int propertyNumber = propertyNumberParameter;
         while(propertyNumber < 5) {
             try {
                 in = new Scanner(System.in);
@@ -260,6 +260,7 @@ public class CarMenu {
                 }
                 else {
                     System.out.println("Audi A6 created!");
+                    System.out.println(audiA6);
                     mainMenu.getCarListInstance().add(audiA6);
                     mainMenu.openMainMenu();
                     propertyNumber++;
@@ -267,7 +268,7 @@ public class CarMenu {
             } catch(InputMismatchException | NumberFormatException e) {
                 System.out.println("You have to input correct value");
             } finally {
-                createAudiA6Form();
+                createAudiA6Form(propertyNumber, audiA6);
             }
         }
     }
@@ -276,8 +277,8 @@ public class CarMenu {
      *  Create Mercedes Vito manually
      *  Input color of car, car number, max speed and year of the car
      */
-    private void createMercedesVitoForm() {
-        MercedesVito mercedesVito = new MercedesVito();
+    private void createMercedesVitoForm(int propertyNumberParameter, MercedesVito mercedesVitoCar) {
+        MercedesVito mercedesVito = mercedesVitoCar;
 
         String value = "";
         /*
@@ -288,7 +289,7 @@ public class CarMenu {
          *  3 -> input year of car
          *  4 -> create car
          */
-        int propertyNumber = 0;
+        int propertyNumber = propertyNumberParameter;
         while(propertyNumber < 5) {
             try {
                 in = new Scanner(System.in);
@@ -395,7 +396,7 @@ public class CarMenu {
             } catch(InputMismatchException | NumberFormatException e) {
                 System.out.println("You have to input correct value");
             } finally {
-                createMercedesVitoForm();
+                createMercedesVitoForm(propertyNumber, mercedesVito);
             }
         }
     }
@@ -404,8 +405,8 @@ public class CarMenu {
      *  Create Toyota Land Cruiser manually
      *  Input color of car, car number, max speed and year of the car
      */
-    private void createToyotaLandCruiserForm() {
-        ToyotaLandCruiser toyotaLandCruiser = new ToyotaLandCruiser();
+    private void createToyotaLandCruiserForm(int propertyNumberParameter, ToyotaLandCruiser toyotaLandCruiserCar) {
+        ToyotaLandCruiser toyotaLandCruiser = toyotaLandCruiserCar;
 
         String value = "";
         /*
@@ -416,7 +417,7 @@ public class CarMenu {
          *  3 -> input year of car
          *  4 -> create car
          */
-        int propertyNumber = 0;
+        int propertyNumber = propertyNumberParameter;
         while(propertyNumber < 5) {
             try {
                 in = new Scanner(System.in);
@@ -523,7 +524,7 @@ public class CarMenu {
             } catch(InputMismatchException | NumberFormatException e) {
                 System.out.println("You have to input correct value");
             } finally {
-                createToyotaLandCruiserForm();
+                createToyotaLandCruiserForm(propertyNumber, toyotaLandCruiserCar);
             }
         }
     }
@@ -532,8 +533,8 @@ public class CarMenu {
      *  Create Tesla Semi manually
      *  Input color of car, car number, max speed and year of the car
      */
-    private void createTeslaSemiForm() {
-        TeslaSemi teslaSemi = new TeslaSemi();
+    private void createTeslaSemiForm(int propertyNumberParameter, TeslaSemi teslaSemiCar) {
+        TeslaSemi teslaSemi = teslaSemiCar;
 
         String value = "";
         /*
@@ -544,7 +545,7 @@ public class CarMenu {
          *  3 -> input year of car
          *  4 -> create car
          */
-        int propertyNumber = 0;
+        int propertyNumber = propertyNumberParameter;
         while(propertyNumber < 5) {
             try {
                 in = new Scanner(System.in);
@@ -651,7 +652,7 @@ public class CarMenu {
             } catch(InputMismatchException | NumberFormatException e) {
                 System.out.println("You have to input correct value");
             } finally {
-                createTeslaSemiForm();
+                createTeslaSemiForm(propertyNumber, teslaSemi);
             }
         }
     }

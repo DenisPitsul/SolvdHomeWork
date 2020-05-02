@@ -97,6 +97,7 @@ public class CarDealershipMenu {
                             if (carIndex >= 0 && carIndex < mainMenu.getCarListInstance().size()) {
                                 Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
                                 mainMenu.getCarDealershipInstance().add(vehicle);
+                                mainMenu.getCarDealershipDAO().writeToFile(vehicle);
                                 System.out.println(vehicle.getShortInfo() + " added to car dealership");
                                 inputCarDealershipOperation();
                             }
@@ -150,6 +151,8 @@ public class CarDealershipMenu {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
                                 mainMenu.getCarDealershipInstance().leaveTheCarDealership(carIndex);
+                                mainMenu.getCarDealershipDAO().clearFile();
+                                mainMenu.getCarDealershipDAO().writeAllToFile(mainMenu.getCarDealershipInstance());
                                 Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
                                 System.out.println(vehicle.getShortInfo() + " left the car dealership");
                                 inputCarDealershipOperation();

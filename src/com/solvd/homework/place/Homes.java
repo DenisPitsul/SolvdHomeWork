@@ -1,22 +1,24 @@
 package com.solvd.homework.place;
 
+import com.solvd.homework.vehicle.Vehicle;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Homes {
     private static int countOfCreatedHomes;
 
-    private Map<Address, Garage> homes;
+    private Map<Address, Garage<Vehicle>> homes;
 
     public Homes() {
         homes = new HashMap<>();
     }
 
-    public Map<Address, Garage> getHomes() {
+    public Map<Address, Garage<Vehicle>> getHomes() {
         return homes;
     }
 
-    public void setHomes(Map<Address, Garage> homes) {
+    public void setHomes(Map<Address, Garage<Vehicle>> homes) {
         this.homes = homes;
     }
 

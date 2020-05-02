@@ -9,11 +9,11 @@ public final class TeslaSemi extends Truck implements CarModel, Car {
     private int batteryPowerReserve; // battery power in kilometers of autonomous driving
 
     public TeslaSemi(int maxSpeed, int year) {
-        super(Engine.ELECTRO, maxSpeed, year);
+        super(Engine.ELECTRIC, maxSpeed, year);
     }
 
     public TeslaSemi(String color, String number, int maxSpeed, int year, int liftingCapacity, int batteryPowerReserve) {
-        super(Engine.ELECTRO, color, number, maxSpeed, year, liftingCapacity);
+        super(Engine.ELECTRIC, color, number, maxSpeed, year, liftingCapacity);
         this.batteryPowerReserve = batteryPowerReserve;
     }
 

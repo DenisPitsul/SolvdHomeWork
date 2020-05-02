@@ -2,15 +2,17 @@ package com.solvd.homework.menu;
 
 import com.solvd.homework.place.Address;
 import com.solvd.homework.place.Garage;
+import com.solvd.homework.vehicle.Vehicle;
 
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class HomesMenu {
-    private static int houseNumber = 1;
+    private static int houseNumber = (int) (Math.random()*200+1);
 
     private Address address;
-    private Garage garage;
+    private Garage<Vehicle> garage;
 
     private AddressMenu addressMenu;
     private GarageMenu garageMenu;
@@ -31,11 +33,11 @@ public class HomesMenu {
         this.address = address;
     }
 
-    public Garage getGarage() {
+    public Garage<Vehicle> getGarage() {
         return garage;
     }
 
-    public void setGarage(Garage garage) {
+    public void setGarage(Garage<Vehicle> garage) {
         this.garage = garage;
     }
 
@@ -107,7 +109,7 @@ public class HomesMenu {
                         mainMenu.openMainMenu();
                         break;
                     case "1":
-                        garage = new Garage();
+                        garage = new Garage<>();
                         openCreateHomeMenu();
                         break;
                     case "2":
@@ -215,6 +217,8 @@ public class HomesMenu {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getHomesInstance().getHomes().size()) {
                                 mainMenu.getHomesInstance().deleteHome(carIndex);
+                                mainMenu.getHomesDAO().clearFile();
+                                mainMenu.getHomesDAO().writeAllToFile(mainMenu.getHomesInstance());
                                 inputHomesOperation();
                             }
                             else {
@@ -258,5 +262,11 @@ public class HomesMenu {
      */
     public void createHome() {
         mainMenu.getHomesInstance().getHomes().put(address, garage);
+        for (Map.Entry<Address, Garage<Vehicle>> home: mainMenu.getHomesInstance().getHomes().entrySet()) {
+            if (address.equals(home.getKey())) {
+                mainMenu.getHomesDAO().writeToFile(home);
+                break;
+            }
+        }
     }
 }
