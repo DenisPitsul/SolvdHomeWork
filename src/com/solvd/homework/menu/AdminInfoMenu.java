@@ -1,7 +1,5 @@
 package com.solvd.homework.menu;
 
-import com.solvd.homework.vehicle.final_car.AudiA6;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -26,6 +24,7 @@ public class AdminInfoMenu {
                 System.out.println("Add new information                ->  1|");
                 System.out.println("Get information by key             ->  2|");
                 System.out.println("Show all admin information         ->  3|");
+                System.out.println("Clear all admin information        ->  4|");
 
                 inputIndex = in.nextLine();
 
@@ -44,6 +43,9 @@ public class AdminInfoMenu {
                         break;
                     case "3":
                         showAllAdminInfo();
+                        break;
+                    case "4":
+                        clearAllAdminInfo();
                         break;
                     default:
                         System.out.println("You have to input number from menu.");
@@ -125,7 +127,7 @@ public class AdminInfoMenu {
                 else {
                     System.out.println("Info added!");
                     System.out.println(key + " - " + value);
-                    mainMenu.getAdminInfoDAO().setValueToProperties(key, value);
+                    mainMenu.getAdminInfoDAO().setValue(key, value);
                     inputAdminInfoOperation();
                     propertyNumber++;
                 }
@@ -161,7 +163,7 @@ public class AdminInfoMenu {
                         openGetAdmitInfoMenu();
                         break;
                     default:
-                        String value = mainMenu.getAdminInfoDAO().getValueFromProperties(inputData);
+                        String value = mainMenu.getAdminInfoDAO().getValue(inputData);
                         System.out.println(inputData + " - " + value);
                         inputAdminInfoOperation();
                         break;
@@ -176,7 +178,13 @@ public class AdminInfoMenu {
     }
 
     private void showAllAdminInfo() {
-        System.out.println(mainMenu.getAdminInfoDAO().getAllProperties());
+        System.out.println(mainMenu.getAdminInfoDAO().getAllInfo());
+        inputAdminInfoOperation();
+    }
+
+    private void clearAllAdminInfo() {
+        mainMenu.getAdminInfoDAO().clearAllInfo();
+        System.out.println(mainMenu.getAdminInfoDAO().getFilePath() + " has cleared.");
         inputAdminInfoOperation();
     }
 }

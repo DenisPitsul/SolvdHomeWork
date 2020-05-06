@@ -217,8 +217,8 @@ public class HomesMenu {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getHomesInstance().getHomes().size()) {
                                 mainMenu.getHomesInstance().deleteHome(carIndex);
-                                mainMenu.getHomesDAO().clearFile();
-                                mainMenu.getHomesDAO().writeAllToFile(mainMenu.getHomesInstance());
+                                mainMenu.getHomesIO().clearFile();
+                                mainMenu.getHomesIO().writeAllToFile(mainMenu.getHomesInstance());
                                 inputHomesOperation();
                             }
                             else {
@@ -246,7 +246,7 @@ public class HomesMenu {
      */
     public void openAddressMenu() {
         AddressMenu addressMenu = getAddressMenuInstance();
-        addressMenu.inputAddressManually(0);
+        addressMenu.inputAddressManually(0, new Address.Builder());
     }
 
     /**
@@ -264,7 +264,7 @@ public class HomesMenu {
         mainMenu.getHomesInstance().getHomes().put(address, garage);
         for (Map.Entry<Address, Garage<Vehicle>> home: mainMenu.getHomesInstance().getHomes().entrySet()) {
             if (address.equals(home.getKey())) {
-                mainMenu.getHomesDAO().writeToFile(home);
+                mainMenu.getHomesIO().writeToFile(home);
                 break;
             }
         }

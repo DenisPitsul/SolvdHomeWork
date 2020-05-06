@@ -1,10 +1,10 @@
 package com.solvd.homework.menu;
 
 
-import com.solvd.homework.dao.AdminInfoDao;
-import com.solvd.homework.dao.CarDealershipDAO;
-import com.solvd.homework.dao.HomesDAO;
-import com.solvd.homework.dao.ParkingDAO;
+import com.solvd.homework.place_io.AdminInfoIO;
+import com.solvd.homework.place_io.CarDealershipIO;
+import com.solvd.homework.place_io.HomesIO;
+import com.solvd.homework.place_io.ParkingIO;
 import com.solvd.homework.place.*;
 import com.solvd.homework.vehicle.Vehicle;
 
@@ -25,22 +25,22 @@ public class MainMenu {
     private HomesMenu homesMenu;
     private AdminInfoMenu adminInfoMenu;
 
-    private ParkingDAO parkingDAO;
-    private CarDealershipDAO carDealershipDAO;
-    private HomesDAO homesDAO;
-    private AdminInfoDao adminInfoDao;
+    private ParkingIO parkingIO;
+    private CarDealershipIO carDealershipIO;
+    private HomesIO homesIO;
+    private AdminInfoIO adminInfoIO;
 
     private Scanner in;
     private String inputIndex;
 
     public MainMenu() {
-        parkingDAO = new ParkingDAO("files/parking.txt");
-        carDealershipDAO = new CarDealershipDAO("files/car_dealership.txt");
-        homesDAO = new HomesDAO("files/homes.txt");
-        adminInfoDao = new AdminInfoDao("files/admin_info.properties");
-        parking = parkingDAO.readAllFromFile();
-        carDealership = carDealershipDAO.readAllFromFile();
-        homes = homesDAO.readAllFromFile();
+        parkingIO = new ParkingIO(ParkingIO.PARKING_FILE_PATH);
+        carDealershipIO = new CarDealershipIO(CarDealershipIO.CAR_DEALERSHIP_FILE_PATH);
+        homesIO = new HomesIO(HomesIO.HOMES_FILE_PATH);
+        adminInfoIO = new AdminInfoIO(AdminInfoIO.ADMIN_INFO_FILE_PATH);
+        parking = parkingIO.readAllFromFile();
+        carDealership = carDealershipIO.readAllFromFile();
+        homes = homesIO.readAllFromFile();
     }
 
     /**
@@ -145,29 +145,29 @@ public class MainMenu {
     /**
      * @return parkingDAO instance
      */
-    public ParkingDAO getParkingDAO() {
-        return parkingDAO;
+    public ParkingIO getParkingIO() {
+        return parkingIO;
     }
 
     /**
      * @return carDealershipDAO instance
      */
-    public CarDealershipDAO getCarDealershipDAO() {
-        return carDealershipDAO;
+    public CarDealershipIO getCarDealershipIO() {
+        return carDealershipIO;
     }
 
     /**
      * @return homesDAO instance
      */
-    public HomesDAO getHomesDAO() {
-        return homesDAO;
+    public HomesIO getHomesIO() {
+        return homesIO;
     }
 
     /**
      * @return adminInfoDAO instance
      */
-    public AdminInfoDao getAdminInfoDAO() {
-        return adminInfoDao;
+    public AdminInfoIO getAdminInfoDAO() {
+        return adminInfoIO;
     }
 
     /**

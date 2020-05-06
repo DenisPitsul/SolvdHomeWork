@@ -1,6 +1,8 @@
-package com.solvd.homework.dao;
+package com.solvd.homework.place_io;
 
 import com.solvd.homework.place.CarDealership;
+import com.solvd.homework.place.Parking;
+import com.solvd.homework.utils.FileIO;
 import com.solvd.homework.vehicle.Vehicle;
 
 import java.io.BufferedReader;
@@ -8,9 +10,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class CarDealershipDAO extends VehiclePlaceDAO<CarDealership<Vehicle>> {
+public class CarDealershipIO extends VehiclePlaceIO<CarDealership<Vehicle>> {
+    public static final String CAR_DEALERSHIP_FILE_PATH = "files/car_dealership.txt";
 
-    public CarDealershipDAO(String filePath) {
+    public CarDealershipIO(String filePath) {
         super(filePath);
     }
 
@@ -23,7 +26,7 @@ public class CarDealershipDAO extends VehiclePlaceDAO<CarDealership<Vehicle>> {
         }
         sb.append(System.lineSeparator());
 
-        writeStringToFile(sb.toString());
+        FileIO.writeToFile(getFilePath(), sb.toString());
     }
 
     @Override
@@ -37,32 +40,22 @@ public class CarDealershipDAO extends VehiclePlaceDAO<CarDealership<Vehicle>> {
             sb.append(System.lineSeparator());
         }
 
-        writeStringToFile(sb.toString());
+        FileIO.writeToFile(getFilePath(), sb.toString());
     }
 
     @Override
     public CarDealership<Vehicle> readAllFromFile() {
         CarDealership<Vehicle> carDealership = new CarDealership<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(getFile()))){
-            String line = "";
-            while ((line = reader.readLine()) != null) {
-                carDealership.add(fromStringToVehicle(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        String stringFromFile = FileIO.readFromFile(getFilePath());
+        String[] lines = stringFromFile.split(System.getProperty("line.separator"));
+        for (String line : lines) {
+            carDealership.add(fromStringToVehicle(line));
         }
-
         return carDealership;
     }
 
     @Override
     public void clearFile() {
-        try {
-            PrintWriter writer = new PrintWriter(getFile());
-            writer.print("");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileIO.clearFile(getFilePath());
     }
 }

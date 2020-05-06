@@ -7,14 +7,17 @@ public class Address {
     private String district;
     private String village;
     private String street;
-    private int homeAddress;
+    private int houseAddress;
 
-    public Address(String city, String district, String village, String street, int homeAddress) {
+    public Address(String city, String district, String village, String street, int houseAddress) {
         this.city = city;
         this.district = district;
         this.village = village;
         this.street = street;
-        this.homeAddress = homeAddress;
+        this.houseAddress = houseAddress;
+    }
+
+    public Address() {
     }
 
     public String getCity() {
@@ -33,8 +36,8 @@ public class Address {
         return street;
     }
 
-    public int getHomeAddress() {
-        return homeAddress;
+    public int getHouseAddress() {
+        return houseAddress;
     }
 
     @Override
@@ -50,7 +53,7 @@ public class Address {
         if (street != null)
             sb.append(", street='").append(street).append('\'');
 
-        sb.append(", homeAddress='").append(homeAddress).append('\'');
+        sb.append(", homeAddress='").append(houseAddress).append('\'');
         sb.append('}');
 
         return sb.toString();
@@ -65,10 +68,9 @@ public class Address {
         private String district;
         private String village;
         private String street;
-        private int houseNumber;
+        private int houseAddress;
 
-        public Builder() {
-        }
+        public Builder() { }
 
         public Builder setCity(String city) {
             this.city = city;
@@ -77,6 +79,7 @@ public class Address {
 
         public Builder setDistrict(String district) {
             this.district = district;
+            System.out.println(this);
             return this;
         }
 
@@ -91,12 +94,12 @@ public class Address {
         }
 
         public Builder setHouseNumber(int houseNumber) {
-            this.houseNumber = houseNumber;
+            this.houseAddress = houseNumber;
             return this;
         }
 
         public Address build() {
-            return new Address(city, district, village, street, houseNumber);
+            return new Address(city, district, village, street, houseAddress);
         }
     }
 
@@ -107,7 +110,7 @@ public class Address {
         if (o == null || getClass() != o.getClass())
             return false;
         Address address = (Address) o;
-        return homeAddress == address.homeAddress &&
+        return houseAddress == address.houseAddress &&
                 Objects.equals(city, address.city) &&
                 Objects.equals(district, address.district) &&
                 Objects.equals(village, address.village) &&
@@ -116,6 +119,6 @@ public class Address {
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, district, village, street, homeAddress);
+        return Objects.hash(city, district, village, street, houseAddress);
     }
 }

@@ -1,4 +1,4 @@
-package com.solvd.homework.dao;
+package com.solvd.homework.place_io;
 
 import com.solvd.homework.vehicle.Vehicle;
 import com.solvd.homework.vehicle.final_car.AudiA6;
@@ -10,10 +10,10 @@ import com.solvd.homework.vehicle.helper.Engine;
 import java.io.*;
 import java.util.Arrays;
 
-public abstract class VehiclePlaceDAO<G> {
+public abstract class VehiclePlaceIO<G> {
     private File file;
 
-    public VehiclePlaceDAO(String filePath) {
+    public VehiclePlaceIO(String filePath) {
         file = new File(filePath);
     }
 
@@ -21,20 +21,14 @@ public abstract class VehiclePlaceDAO<G> {
         return file;
     }
 
+    public String getFilePath() {
+        return file.getPath();
+    }
+
     public abstract void writeToFile(Vehicle vehicle);
     public abstract void writeAllToFile(G group);
     public abstract G readAllFromFile();
     public abstract void clearFile();
-
-    protected void writeStringToFile(String str) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            writer.write(str);
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     protected String fromVehicleToString(Vehicle vehicle) {
         StringBuilder sb = new StringBuilder();

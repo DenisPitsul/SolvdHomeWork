@@ -10,3 +10,9 @@ Garage(big)
 TeslaSemi,ELECTRIC,grey,CE4099AA,200,2017,21,810,
 AudiA6,V6+Turbo,red,CE5510AA,260,2016,20,Alcantara,true,
 -
+Address
+Chernivtsi,Hliboka,Kamianka,Molodizhna,16,
+Garage(small)
+ToyotaLandCruiser,V6+Turbo,Grey,CE3378AA,240,2014,true,55,true,
+AudiA6,V6+Turbo,blue,CE4100AA,250,2014,21,Alcantara,true,
+-

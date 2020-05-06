@@ -22,8 +22,8 @@ public class AddressMenu {
      *  And in addition we can specify district and village if it is not city
      *  else we can specify 0 to miss entering these fields
      */
-    public void inputAddressManually(int propertyNumberParameter) {
-        Address.Builder address = new Address.Builder();
+    public void inputAddressManually(int propertyNumberParameter, Address.Builder addressParameter) {
+        Address.Builder address = addressParameter;
 
         String value = "";
         /*
@@ -165,7 +165,7 @@ public class AddressMenu {
             } catch(InputMismatchException | NumberFormatException e) {
                 System.out.println("You have to input correct value");
             } finally {
-                inputAddressManually(propertyNumber);
+                inputAddressManually(propertyNumber, address);
             }
         }
     }

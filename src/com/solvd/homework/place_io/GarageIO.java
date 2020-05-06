@@ -1,6 +1,8 @@
-package com.solvd.homework.dao;
+package com.solvd.homework.place_io;
 
 import com.solvd.homework.place.Garage;
+import com.solvd.homework.place.Parking;
+import com.solvd.homework.utils.FileIO;
 import com.solvd.homework.vehicle.Vehicle;
 
 import java.io.BufferedReader;
@@ -8,9 +10,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class GarageDAO extends VehiclePlaceDAO<Garage<Vehicle>> {
+public class GarageIO extends VehiclePlaceIO<Garage<Vehicle>> {
 
-    public GarageDAO(String filePath) {
+    public GarageIO(String filePath) {
         super(filePath);
     }
 
@@ -23,7 +25,7 @@ public class GarageDAO extends VehiclePlaceDAO<Garage<Vehicle>> {
         }
         sb.append(System.lineSeparator());
 
-        writeStringToFile(sb.toString());
+        FileIO.writeToFile(getFilePath(), sb.toString());
     }
 
     @Override
@@ -37,32 +39,22 @@ public class GarageDAO extends VehiclePlaceDAO<Garage<Vehicle>> {
             sb.append(System.lineSeparator());
         }
 
-        writeStringToFile(sb.toString());
+        FileIO.writeToFile(getFilePath(), sb.toString());
     }
 
     @Override
     public Garage<Vehicle> readAllFromFile() {
         Garage<Vehicle> garage = new Garage<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(getFile()))){
-            String line = "";
-            while ((line = reader.readLine()) != null) {
-                garage.add(fromStringToVehicle(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        String stringFromFile = FileIO.readFromFile(getFilePath());
+        String[] lines = stringFromFile.split(System.getProperty("line.separator"));
+        for (String line : lines) {
+            garage.add(fromStringToVehicle(line));
         }
-
         return garage;
     }
 
     @Override
     public void clearFile() {
-        try {
-            PrintWriter writer = new PrintWriter(getFile());
-            writer.print("");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileIO.clearFile(getFilePath());
     }
 }

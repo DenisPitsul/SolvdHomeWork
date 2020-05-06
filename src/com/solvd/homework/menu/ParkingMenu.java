@@ -1,7 +1,5 @@
 package com.solvd.homework.menu;
 
-import com.solvd.homework.dao.AddressDAO;
-import com.solvd.homework.dao.ParkingDAO;
 import com.solvd.homework.exception.TruckOnParkingException;
 import com.solvd.homework.vehicle.Truck;
 import com.solvd.homework.vehicle.Vehicle;
@@ -105,7 +103,7 @@ public class ParkingMenu {
                                 }
                                 else {
                                     mainMenu.getParkingInstance().add(vehicle);
-                                    mainMenu.getParkingDAO().writeToFile(vehicle);
+                                    mainMenu.getParkingIO().writeToFile(vehicle);
                                     System.out.println("Car " + vehicle.getShortInfo() + " has parked");
                                     inputParkingOperation();
                                 }
@@ -163,8 +161,8 @@ public class ParkingMenu {
                             int carIndex = Integer.parseInt(inputIndex);
                             if (carIndex >= 0 && carIndex < mainMenu.getParkingInstance().getParkingCars().size()) {
                                 mainMenu.getParkingInstance().leaveTheParking(carIndex);
-                                mainMenu.getParkingDAO().clearFile();
-                                mainMenu.getParkingDAO().writeAllToFile(mainMenu.getParkingInstance());
+                                mainMenu.getParkingIO().clearFile();
+                                mainMenu.getParkingIO().writeAllToFile(mainMenu.getParkingInstance());
                                 Vehicle vehicle = mainMenu.getCarListInstance().get(carIndex);
                                 System.out.println("Car " + vehicle.getShortInfo() + " left the parking");
                                 inputParkingOperation();
