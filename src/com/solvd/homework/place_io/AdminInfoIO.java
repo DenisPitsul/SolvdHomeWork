@@ -5,7 +5,7 @@ import com.solvd.homework.utils.PropertyIO;
 import java.io.File;
 
 public class AdminInfoIO {
-    public static final String ADMIN_INFO_FILE_PATH = "files/admin_info.properties";
+    public static final String ADMIN_INFO_FILE_PATH = "resources/properties/admin_info.properties";
 
     private File file;
 

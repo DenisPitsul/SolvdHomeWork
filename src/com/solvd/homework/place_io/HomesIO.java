@@ -10,7 +10,7 @@ import java.io.*;
 import java.util.Map;
 
 public class HomesIO {
-    public static final String HOMES_FILE_PATH = "files/homes.txt";
+    public static final String HOMES_FILE_PATH = "resources/text_files/homes.txt";
 
     private File file;
     private AddressIO addressIO;

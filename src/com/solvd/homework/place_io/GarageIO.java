@@ -1,14 +1,8 @@
 package com.solvd.homework.place_io;
 
 import com.solvd.homework.place.Garage;
-import com.solvd.homework.place.Parking;
 import com.solvd.homework.utils.FileIO;
 import com.solvd.homework.vehicle.Vehicle;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 public class GarageIO extends VehiclePlaceIO<Garage<Vehicle>> {
 

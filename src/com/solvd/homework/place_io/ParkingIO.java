@@ -5,7 +5,7 @@ import com.solvd.homework.utils.FileIO;
 import com.solvd.homework.vehicle.Vehicle;
 
 public class ParkingIO extends VehiclePlaceIO<Parking<Vehicle>> {
-    public static final String PARKING_FILE_PATH = "files/parking.txt";
+    public static final String PARKING_FILE_PATH = "resources/text_files/parking.txt";
 
     public ParkingIO(String filePath) {
         super(filePath);

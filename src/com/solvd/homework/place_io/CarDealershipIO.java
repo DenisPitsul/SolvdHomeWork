@@ -1,17 +1,11 @@
 package com.solvd.homework.place_io;
 
 import com.solvd.homework.place.CarDealership;
-import com.solvd.homework.place.Parking;
 import com.solvd.homework.utils.FileIO;
 import com.solvd.homework.vehicle.Vehicle;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 public class CarDealershipIO extends VehiclePlaceIO<CarDealership<Vehicle>> {
-    public static final String CAR_DEALERSHIP_FILE_PATH = "files/car_dealership.txt";
+    public static final String CAR_DEALERSHIP_FILE_PATH = "resources/text_files/car_dealership.txt";
 
     public CarDealershipIO(String filePath) {
         super(filePath);
