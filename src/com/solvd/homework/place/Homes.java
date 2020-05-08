@@ -28,8 +28,8 @@ public class Homes {
 
     /**
      * create home by address and garage and add to map
-     * @param address key of the homes map
-     * @param garage value of the homes map
+     * @param address key of the homes.xml map
+     * @param garage value of the homes.xml map
      */
     public void addHome(Address address, Garage garage) {
         homes.put(address, garage);
@@ -39,7 +39,7 @@ public class Homes {
     /**
      * Delete home from the map by address
      * @param address of the home which have to delete from the map
-     * @return garage of deleted home or null if there weren't any homes in the map with this addres
+     * @return garage of deleted home or null if there weren't any homes.xml in the map with this addres
      */
     public Garage deleteHome(Address address) {
         if (homes.get(address) == null) {
@@ -57,7 +57,7 @@ public class Homes {
      */
     public void deleteHome(int index) {
         if (homes.size() == 0) {
-            System.out.println("There is not any homes");
+            System.out.println("There is not any homes.xml");
         }
 
         if (index >= 0 && index < homes.size()) {
@@ -80,11 +80,11 @@ public class Homes {
     }
 
     /**
-     * Show all homes on the screen
+     * Show all homes.xml on the screen
      */
     public void showInfo() {
         System.out.println("Homes {");
-        System.out.println("\tCount of created homes: " + countOfCreatedHomes);
+        System.out.println("\tCount of created homes.xml: " + countOfCreatedHomes);
         int i = 0;
         for (Address address : homes.keySet()) {
             System.out.println("\t Home #"+ i);

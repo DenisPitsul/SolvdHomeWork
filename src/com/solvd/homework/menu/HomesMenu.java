@@ -84,7 +84,7 @@ public class HomesMenu {
      * Choose a home action.
      * 1 -> Create home
      * 2 -> delete home
-     * 3 -> Show info about all homes
+     * 3 -> Show info about all homes.xml
      */
     public void inputHomesOperation() {
         inputIndex = "";
@@ -97,7 +97,7 @@ public class HomesMenu {
                 System.out.println("----------------------------------------|");
                 System.out.println("Create home input                  ->  1|");
                 System.out.println("Delete home input                  ->  2|");
-                System.out.println("Show info about all homes          ->  3|");
+                System.out.println("Show info about all homes.xml          ->  3|");
 
                 inputIndex = in.nextLine();
 
@@ -188,7 +188,7 @@ public class HomesMenu {
     }
 
     /**
-     * Show all homes on the screen and choose number of home to leave delete
+     * Show all homes.xml on the screen and choose number of home to leave delete
      */
     public void openDeleteHomeMenu() {
         inputIndex = "";

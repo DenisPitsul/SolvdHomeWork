@@ -132,8 +132,8 @@ public class MainMenu {
     }
 
     /**
-     * If we have not homes instance yet then create and return
-     * @return homes instance
+     * If we have not homes.xml instance yet then create and return
+     * @return homes.xml instance
      */
     public Homes getHomesInstance() {
         if (homes == null) {
@@ -215,11 +215,11 @@ public class MainMenu {
     }
 
     /**
-     * Show homes with addresses and garages on the screen
+     * Show homes.xml with addresses and garages on the screen
      */
     public void showAllHomes() {
         if (getHomesInstance().getHomes() == null || getHomesInstance().getHomes().size() == 0) {
-            System.out.println("There is not any homes!");
+            System.out.println("There is not any homes.xml!");
             openHomeMenu();
             return;
         }
@@ -307,7 +307,7 @@ public class MainMenu {
     }
 
     /**
-     * Go to homes menu
+     * Go to homes.xml menu
      */
     private void openHomeMenu() {
         HomesMenu homesMenu = getHomesMenuInstance();
