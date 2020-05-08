@@ -133,7 +133,7 @@ public class MainMenu {
 
     /**
      * If we have not homes.xml instance yet then create and return
-     * @return homes.xml instance
+     * @return homes instance
      */
     public Homes getHomesInstance() {
         if (homes == null) {
@@ -215,7 +215,7 @@ public class MainMenu {
     }
 
     /**
-     * Show homes.xml with addresses and garages on the screen
+     * Show homes with addresses and garages on the screen
      */
     public void showAllHomes() {
         if (getHomesInstance().getHomes() == null || getHomesInstance().getHomes().size() == 0) {

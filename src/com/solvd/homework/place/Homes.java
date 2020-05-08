@@ -28,8 +28,8 @@ public class Homes {
 
     /**
      * create home by address and garage and add to map
-     * @param address key of the homes.xml map
-     * @param garage value of the homes.xml map
+     * @param address key of the homes map
+     * @param garage value of the homes map
      */
     public void addHome(Address address, Garage garage) {
         homes.put(address, garage);
